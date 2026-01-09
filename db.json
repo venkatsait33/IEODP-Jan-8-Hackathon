@@ -143,6 +143,17 @@
       "previousState": "ACTION_TAKEN",
       "newState": "REVERIFY",
       "timestamp": "2026-01-09T06:51:52.989Z"
+    },
+    {
+      "id": "518f",
+      "entity": "TICKET",
+      "entityId": "57c7",
+      "userName": "Enterprise User",
+      "role": "AUDITORS",
+      "action": "AUDITOR_REVERIFY",
+      "previousState": "ACTION_TAKEN",
+      "newState": "REVERIFY",
+      "timestamp": "2026-01-09T10:38:53.054Z"
     }
   ],
   "tickets": [
@@ -193,6 +204,18 @@
       "managementAction": "",
       "auditorDecision": "",
       "createdAt": "2026-01-09T05:18:02.777Z"
+    },
+    {
+      "id": "57c7",
+      "title": "testing the app with ticket 1",
+      "description": "ticket 111",
+      "priority": "LOW",
+      "status": "REVERIFY",
+      "raisedBy": 1,
+      "leadershipComment": "leadership component is working correctly ",
+      "managementAction": "Management component is working correctly ",
+      "auditorDecision": "REVERIFY",
+      "createdAt": "2026-01-09T10:36:40.747Z"
     }
   ]
 }

@@ -5,6 +5,8 @@ import {
   TrendingUp,
   ShieldCheck,
   FileSearch,
+  GitBranch,
+  Users,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
@@ -37,24 +39,53 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     [ROLES.OPERATIONS]: [
       { title: "Dashboard", icon: <LayoutGrid />, path: "/operations/dashboard" },
       { title: "Requests", icon: <NotebookTabs />, path: "/operations/requests" },
+      {
+        title: "Workflow Process",
+        icon: <GitBranch />,
+        path: "/workflow-process"
+      }
+
     ],
+    [ROLES.ADMIN]: [
+      { title: "Dashboard", icon: <LayoutGrid />, path: "/admin/dashboard" },
+      { title: "Users", icon: <Users />, path: "/admin/users" },
+    ],
+
 
     [ROLES.LEADERSHIP]: [
       { title: "Dashboard", icon: <LayoutGrid />, path: "/leadership/dashboard" },
       { title: "Reviews", icon: <ClipboardCheck />, path: "/leadership/reviews" },
       { title: "AI Insights", icon: <TrendingUp />, path: "/leadership/insights" },
+      {
+        title: "Workflow Process",
+        icon: <GitBranch />,
+        path: "/workflow-process"
+      }
+
     ],
 
     [ROLES.MANAGEMENT]: [
       { title: "Dashboard", icon: <LayoutGrid />, path: "/management/dashboard" },
       { title: "Actions", icon: <ClipboardCheck />, path: "/management/actions" },
       // { title: "Approvals", icon: <ShieldCheck />, path: "/management/approvals" },
+      {
+        title: "Workflow Process",
+        icon: <GitBranch />,
+        path: "/workflow-process"
+      }
+
     ],
 
     [ROLES.AUDITORS]: [
       { title: "Dashboard", icon: <LayoutGrid />, path: "/auditors/dashboard" },
       { title: "Audit Logs", icon: <FileSearch />, path: "/auditors/logs" },
       { title: "Decisions", icon: <ShieldCheck />, path: "/auditors/decisions" },
+      {
+        title: "Workflow Process",
+        icon: <GitBranch />,
+        path: "/workflow-process"
+      }
+
     ],
   };
 

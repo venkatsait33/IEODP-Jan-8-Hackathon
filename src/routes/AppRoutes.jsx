@@ -13,7 +13,11 @@ import {
     TicketsPage,
     Unauthorized,
     TicketDetailsPage,
-    AuditorDashboard
+    AuditorDashboard,
+    WorkflowProcessPage,
+    Register,
+    AdminUsersPage,
+    AdminDashboard
 } from "./index";
 import { ROLES } from "../utils/roles";
 
@@ -23,6 +27,31 @@ const AppRoutes = () => {
             {/* Public */}
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            {/* Admin */}
+            
+            <Route
+                path="/admin/dashboard"
+                element={
+                    <ProtectedRoute allowedRoles={["ADMIN"]}>
+                        <MainLayout>
+                            <AdminDashboard />
+                        </MainLayout>
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/admin/users"
+                element={
+                    <ProtectedRoute allowedRoles={["ADMIN"]}>
+                        <MainLayout>
+                            <AdminUsersPage />
+                        </MainLayout>
+                    </ProtectedRoute>
+                }
+            />
+
 
             {/* OPERATIONS */}
             <Route
@@ -160,6 +189,18 @@ const AppRoutes = () => {
                     </ProtectedRoute>
                 }
             />
+
+            <Route
+                path="/workflow-process"
+                element={
+                    <ProtectedRoute allowedRoles={["OPERATIONS", "LEADERSHIP", "MANAGEMENT", "AUDITORS"]}>
+                        <MainLayout>
+                            <WorkflowProcessPage />
+                        </MainLayout>
+                    </ProtectedRoute>
+                }
+            />
+
 
 
             {/* Common */}

@@ -33,7 +33,7 @@ const TicketDetailsPage = () => {
                     <span className="badge badge-outline">{ticket.priority}</span>
                     <span className="badge badge-info">{ticket.status}</span>
                 </div>
-
+                <h1>WorkFlow</h1>
                 <TicketTimeline status={ticket?.status}
                     auditorDecision={ticket?.auditorDecision} />
             </div>

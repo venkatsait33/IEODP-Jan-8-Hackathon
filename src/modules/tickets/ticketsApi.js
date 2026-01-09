@@ -3,7 +3,15 @@ import { baseApi } from "../../api/baseApi";
 export const ticketsApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getTickets: builder.query({
-            query: () => "/tickets",
+            query: ({ page = 1, limit = 10, status, priority, search } = {}) => {
+                let queryString = `/tickets?_page=${page}&_limit=${limit}`;
+
+                if (status) queryString += `&status=${status}`;
+                if (priority) queryString += `&priority=${priority}`;
+                if (search) queryString += `&q=${search}`;
+
+                return queryString;
+            },
             providesTags: ["Tickets"],
         }),
 

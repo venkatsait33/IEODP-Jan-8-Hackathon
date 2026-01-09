@@ -1,4 +1,3 @@
-import Login from "../auth/Login";
 import ProtectedRoute from "../layout/ProtectedRoutes";
 import MainLayout from "../layout/MainLayout";
 import OperationsDashboard from "../modules/operations/pages/OperationsDashboard ";
@@ -12,22 +11,31 @@ import TicketsPage from "../modules/tickets/pages/TicketPage";
 import Unauthorized from "../layout/Unathorized";
 import TicketDetailsPage from "../modules/tickets/pages/TicketDetailsPage";
 import AuditorDashboard from "../modules/audits/page/AuditDashboard";
+import WorkflowProcessPage from "../modules/workflow/pages/WorkflowProcessPage";
+import Login from "../auth/login/Login";
+import Register from "../auth/register/Register";
+import AdminUsersPage from "../auth/admin/pages/AdimUsersPage";
+import AdminDashboard from "../auth/admin/pages/AdminDashboard";
 export {
     Login,
+    Register,
+    AdminUsersPage,
+    AdminDashboard,
     ProtectedRoute,
     MainLayout,
     OperationsDashboard,
     ManagementDashboard,
     LeadershipDashboard,
     AuditLogsPage,
-       ApprovalsPage,
+    ApprovalsPage,
     AiInsightsPage,
     HomePage,
     TicketsPage,
     Unauthorized,
     TicketDetailsPage,
-    AuditorDashboard
+    AuditorDashboard,
+    WorkflowProcessPage
 };
-    
-    
+
+
 

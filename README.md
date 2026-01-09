@@ -1,10 +1,3 @@
-Perfect – this is exactly what you should do before pushing to GitHub.
-I’ll give you a **professional, enterprise-grade README.md** that matches everything you’ve built: roles, workflows, tickets, audit, etc.
-
-You can **copy–paste this directly** into `README.md` in your project root.
-
----
-
 # **IEODP – Intelligent Enterprise Operations & Decision Platform**
 
 🚀 **Enterprise-grade workflow & decision management platform**

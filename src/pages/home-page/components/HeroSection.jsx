@@ -32,7 +32,7 @@ const HeroSection = () => {
                     <a className="hover:text-indigo-600" href="#">
                         Docs
                     </a>
-                    <Link to='/login'>Login</Link>
+                   
 
                     {/* CLOSE BUTTON */}
                     <button
@@ -55,18 +55,13 @@ const HeroSection = () => {
 
                 {/* DESKTOP BUTTONS */}
                 <div className="hidden md:flex space-x-4">
-                    <a
+                    <Link
                         className="text-indigo-600 bg-indigo-100 px-5 py-2 rounded-full text-sm font-medium hover:bg-indigo-200 transition"
-                        href="#"
+                        to='/login'
                     >
                         Login
-                    </a>
-                    <a
-                        className="bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-indigo-700 transition"
-                        href="#"
-                    >
-                        Sign up
-                    </a>
+                    </Link>
+                    
                 </div>
 
                 {/* OPEN MENU BUTTON */}

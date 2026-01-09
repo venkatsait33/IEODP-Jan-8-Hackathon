@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useSelector } from "react-redux";
 import { useCreateTicketMutation } from "../ticketsApi";
 import { raiseRequestSchema } from "../validation/ticketSchema";
+import { toast } from "react-toastify";
 
 const RaiseRequestForm = () => {
     const { user } = useSelector((state) => state.auth);
@@ -29,7 +30,8 @@ const RaiseRequestForm = () => {
         });
 
         reset();
-        alert("Request submitted successfully");
+        toast.success("Request submitted successfully");
+        // alert("Request submitted successfully");
     };
 
     return (

@@ -15,5 +15,5 @@ export const managementActionSchema = z.object({
 });
 
 export const auditorDecisionSchema = z.object({
-    auditorDecision: z.enum(["APPROVED", "REJECTED"]),
+    auditorDecision: z.enum(["APPROVED", "REJECTED","REVERIFY"]),
 });

@@ -32,8 +32,6 @@ export const baseApi = createApi({
     }),
     tagTypes: [
         "Users",
-        "Workflows",
-        "Tasks",
         "Approvals",
         "Insights",
         "Audits",

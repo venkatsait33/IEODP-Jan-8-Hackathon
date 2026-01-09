@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useUpdateTicketMutation } from "../ticketsApi";
 import { leadershipCommentSchema } from "../validation/ticketSchema";
+import { toast } from "react-toastify";
 
 const LeadershipCommentForm = ({ ticket }) => {
     const [updateTicket] = useUpdateTicketMutation();
@@ -24,10 +25,12 @@ const LeadershipCommentForm = ({ ticket }) => {
                 },
             }).unwrap();
 
-            alert("Comment added and forwarded to management");
+            toast.success("Comment added and forwarded to management");
+            // alert("Comment added and forwarded to management");
         } catch (error) {
             console.error("Update failed:", error);
-            alert("Failed to update ticket");
+            toast.error("Failed to update ticket");
+            // alert("Failed to update ticket");
         }
     };
 

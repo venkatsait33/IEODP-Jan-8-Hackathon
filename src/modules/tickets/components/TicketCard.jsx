@@ -4,25 +4,32 @@ import LeadershipCommentForm from "../forms/LeadershipCommentForm";
 import AuditorDecisionForm from "../forms/AuditorDecisionForm";
 import { ROLES } from "../../../utils/roles";
 import { TICKET_STATUS } from "../../../utils/ticketStatus";
+import TicketTimeline from "./TicketTimeline";
+import { useNavigate } from "react-router-dom";
+
 
 const TicketCard = ({ ticket }) => {
     const { role } = useSelector((state) => state.auth);
+    const navigate = useNavigate();
+
 
     return (
         <div
             id={`ticket-${ticket.id}`}
             data-testid={`ticket-card-${ticket.id}`}
-            className="card bg-base-200 p-4 mb-4 shadow"
+            onClick={() => navigate(`/tickets/${ticket.id}`)}
+            className="card bg-base-200 p-4 mb-4 shadow cursor-pointer hover:shadow-lg transition"
         >
             <h4 className="font-bold text-lg mb-1">{ticket.title}</h4>
             <p className="text-sm mb-2">{ticket.description}</p>
-
+            <TicketTimeline status={ticket?.status}
+                auditorDecision={ticket?.auditorDecision} />
             <div className="flex gap-2 mb-2">
                 <span className="badge badge-outline">{ticket.priority}</span>
                 <span className="badge badge-info">{ticket.status}</span>
             </div>
 
-            {role === ROLES.LEADERSHIP && ticket.status === TICKET_STATUS.SUBMITTED && (
+            {/* {role === ROLES.LEADERSHIP && ticket.status === TICKET_STATUS.SUBMITTED && (
                 <LeadershipCommentForm ticket={ticket} />
             )}
 
@@ -34,7 +41,7 @@ const TicketCard = ({ ticket }) => {
             {role === ROLES.AUDITORS &&
                 ticket.status === TICKET_STATUS.ACTION_TAKEN && (
                     <AuditorDecisionForm ticket={ticket} />
-                )}
+                )} */}
         </div>
     );
 };

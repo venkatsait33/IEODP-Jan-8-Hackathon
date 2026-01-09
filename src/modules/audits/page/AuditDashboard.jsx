@@ -13,38 +13,38 @@ import {
 import { useGetTicketsQuery } from "../../tickets/ticketsApi";
 import { TICKET_STATUS } from "../../../utils/ticketStatus";
 
-const COLORS = ["#3b82f6", "#f59e0b", "#10b981", "#ef4444", "#a855f7"];
+const COLORS = ["#10b981", "#ef4444", "#f59e0b", "#3b82f6", "#a855f7"];
 
-const ManagementDashboard = () => {
+const AuditorDashboard = () => {
     const { data: tickets = [], isLoading } = useGetTicketsQuery();
 
     if (isLoading) {
         return <div className="loading loading-spinner loading-lg" />;
     }
 
-    // ---------- Management Relevant Tickets ----------
-    const pendingForManagement = tickets.filter(
-        (t) => t.status === TICKET_STATUS.FORWARDED_TO_MANAGEMENT
-    );
-
-    const actionTaken = tickets.filter(
+    // ---------- Auditor Relevant Tickets ----------
+    const pendingDecisions = tickets.filter(
         (t) => t.status === TICKET_STATUS.ACTION_TAKEN
     );
 
-    const reverifyCount = tickets.filter(
-        (t) => t.status === TICKET_STATUS.REVERIFY
+    const approvedCount = tickets.filter(
+        (t) => t.auditorDecision === "ACCEPTED"
     ).length;
 
     const rejectedCount = tickets.filter(
         (t) => t.auditorDecision === "REJECTED"
     ).length;
 
-    // ---------- Status Distribution ----------
-    const statusData = [
-        { name: "Pending Review", value: pendingForManagement.length },
-        { name: "Action Taken", value: actionTaken.length },
-        { name: "Reverify", value: reverifyCount },
+    const reverifyCount = tickets.filter(
+        (t) => t.auditorDecision === "REVERIFY"
+    ).length;
+
+    // ---------- Decision Distribution ----------
+    const decisionData = [
+        { name: "Approved", value: approvedCount },
         { name: "Rejected", value: rejectedCount },
+        { name: "Reverify", value: reverifyCount },
+        { name: "Pending", value: pendingDecisions.length },
     ];
 
     // ---------- Priority Distribution ----------
@@ -59,49 +59,47 @@ const ManagementDashboard = () => {
 
     return (
         <div className="space-y-6">
-            <h1 className="text-2xl font-bold mb-4">Management Dashboard</h1>
+            <h1 className="text-2xl font-bold mb-4">Auditor Dashboard</h1>
 
             {/* STATS CARDS */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="card bg-base-200 p-4 shadow">
-                    <div className="text-sm">Pending for Action</div>
-                    <div className="text-2xl font-bold">
-                        {pendingForManagement.length}
-                    </div>
+                    <div className="text-sm">Pending Decisions</div>
+                    <div className="text-2xl font-bold">{pendingDecisions.length}</div>
                 </div>
 
                 <div className="card bg-base-200 p-4 shadow">
-                    <div className="text-sm">Action Taken</div>
-                    <div className="text-2xl font-bold">{actionTaken.length}</div>
-                </div>
-
-                <div className="card bg-base-200 p-4 shadow">
-                    <div className="text-sm">Reverify</div>
-                    <div className="text-2xl font-bold">{reverifyCount}</div>
+                    <div className="text-sm">Approved</div>
+                    <div className="text-2xl font-bold">{approvedCount}</div>
                 </div>
 
                 <div className="card bg-base-200 p-4 shadow">
                     <div className="text-sm">Rejected</div>
                     <div className="text-2xl font-bold">{rejectedCount}</div>
                 </div>
+
+                <div className="card bg-base-200 p-4 shadow">
+                    <div className="text-sm">Reverify</div>
+                    <div className="text-2xl font-bold">{reverifyCount}</div>
+                </div>
             </div>
 
             {/* CHART GRID */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* STATUS PIE */}
+                {/* DECISION PIE */}
                 <div className="card bg-base-200 p-4 shadow">
-                    <h2 className="font-semibold mb-2">Ticket Status Distribution</h2>
+                    <h2 className="font-semibold mb-2">Decision Distribution</h2>
                     <ResponsiveContainer width="100%" height={250}>
                         <PieChart>
                             <Pie
-                                data={statusData}
+                                data={decisionData}
                                 cx="50%"
                                 cy="50%"
                                 outerRadius={80}
                                 dataKey="value"
                                 label
                             >
-                                {statusData.map((entry, index) => (
+                                {decisionData.map((entry, index) => (
                                     <Cell key={index} fill={COLORS[index % COLORS.length]} />
                                 ))}
                             </Pie>
@@ -127,4 +125,4 @@ const ManagementDashboard = () => {
     );
 };
 
-export default ManagementDashboard;
+export default AuditorDashboard;

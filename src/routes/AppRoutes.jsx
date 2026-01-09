@@ -7,13 +7,13 @@ import {
     ManagementDashboard,
     LeadershipDashboard,
     AuditLogsPage,
-    WorkflowsPage,
-    TasksPage,
     ApprovalsPage,
     AiInsightsPage,
     HomePage,
     TicketsPage,
     Unauthorized,
+    TicketDetailsPage,
+    AuditorDashboard
 } from "./index";
 import { ROLES } from "../utils/roles";
 
@@ -31,28 +31,6 @@ const AppRoutes = () => {
                     <ProtectedRoute allowedRoles={[ROLES.OPERATIONS]}>
                         <MainLayout>
                             <OperationsDashboard />
-                        </MainLayout>
-                    </ProtectedRoute>
-                }
-            />
-
-            <Route
-                path="/operations/workflows"
-                element={
-                    <ProtectedRoute allowedRoles={[ROLES.OPERATIONS]}>
-                        <MainLayout>
-                            <WorkflowsPage />
-                        </MainLayout>
-                    </ProtectedRoute>
-                }
-            />
-
-            <Route
-                path="/operations/tasks"
-                element={
-                    <ProtectedRoute allowedRoles={[ROLES.OPERATIONS]}>
-                        <MainLayout>
-                            <TasksPage />
                         </MainLayout>
                     </ProtectedRoute>
                 }
@@ -139,6 +117,16 @@ const AppRoutes = () => {
 
             {/* AUDITORS */}
             <Route
+                path="/auditors/dashboard"
+                element={
+                    <ProtectedRoute allowedRoles={[ROLES.AUDITORS]}>
+                        <MainLayout>
+                            <AuditorDashboard />
+                        </MainLayout>
+                    </ProtectedRoute>
+                }
+            />
+            <Route
                 path="/auditors/logs"
                 element={
                     <ProtectedRoute allowedRoles={[ROLES.AUDITORS]}>
@@ -150,7 +138,7 @@ const AppRoutes = () => {
             />
 
             <Route
-                path="/auditors/decision"
+                path="/auditors/decisions"
                 element={
                     <ProtectedRoute allowedRoles={[ROLES.AUDITORS]}>
                         <MainLayout>
@@ -159,6 +147,20 @@ const AppRoutes = () => {
                     </ProtectedRoute>
                 }
             />
+
+            {/* Ticket */}
+
+            <Route
+                path="/tickets/:id"
+                element={
+                    <ProtectedRoute allowedRoles={[ROLES.OPERATIONS, ROLES.LEADERSHIP, ROLES.MANAGEMENT, ROLES.AUDITORS]}>
+                        <MainLayout>
+                            <TicketDetailsPage />
+                        </MainLayout>
+                    </ProtectedRoute>
+                }
+            />
+
 
             {/* Common */}
             <Route path="/unauthorized" element={<Unauthorized />} />

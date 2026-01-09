@@ -1,11 +1,7 @@
 import { useSelector } from "react-redux";
-import ManagementActionForm from "../forms/ManagementActionForm";
-import LeadershipCommentForm from "../forms/LeadershipCommentForm";
-import AuditorDecisionForm from "../forms/AuditorDecisionForm";
-import { ROLES } from "../../../utils/roles";
-import { TICKET_STATUS } from "../../../utils/ticketStatus";
 import TicketTimeline from "./TicketTimeline";
 import { useNavigate } from "react-router-dom";
+import { memo } from "react";
 
 
 const TicketCard = ({ ticket }) => {
@@ -46,4 +42,4 @@ const TicketCard = ({ ticket }) => {
     );
 };
 
-export default TicketCard;
+export default memo(TicketCard);

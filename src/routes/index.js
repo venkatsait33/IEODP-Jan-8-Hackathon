@@ -14,8 +14,10 @@ import AuditorDashboard from "../modules/audits/page/AuditDashboard";
 import WorkflowProcessPage from "../modules/workflow/pages/WorkflowProcessPage";
 import Login from "../auth/login/Login";
 import Register from "../auth/register/Register";
-import AdminUsersPage from "../auth/admin/pages/AdimUsersPage";
+import AdminUsersPage from "../auth/admin/pages/AdminUsersPage";
 import AdminDashboard from "../auth/admin/pages/AdminDashboard";
+
+
 export {
     Login,
     Register,

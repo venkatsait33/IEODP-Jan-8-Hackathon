@@ -1,343 +1,215 @@
-# **IEODP – Intelligent Enterprise Operations & Decision Platform**
+# Intelligent Enterprise Operations & Decision Platform (IEODP)
 
-🚀 **Enterprise-grade workflow & decision management platform**
-Role-driven. Workflow-enforced. Audit-ready. Production-style architecture.
+> A production-grade, role-driven enterprise workflow platform built with React, Redux Toolkit, RTK Query, and DaisyUI.
 
 ---
 
-## 📌 Project Overview
+## 🚀 Project Overview
 
-**IEODP (Intelligent Enterprise Operations & Decision Platform)** is a unified enterprise system designed to manage:
+The **Intelligent Enterprise Operations & Decision Platform (IEODP)** is an enterprise-grade frontend application designed to manage complex operational workflows, enforce governance and auditability, and support multi-role collaboration.
 
-* Multi-role workflows
-* Approval chains
-* Operational requests
-* Leadership reviews
-* Management actions
-* Auditor decisions
-* Full auditability and governance
+This project simulates real-world enterprise systems such as **ServiceNow, SAP Workflow, JIRA Service Management** and is built as part of a high-difficulty frontend engineering assessment.
 
-This platform simulates **real-world enterprise workflows** and is built with **production patterns**, not demo shortcuts.
+---
+
+## 🎯 Key Objectives
+
+* Role-based workflow management
+* Config-driven dashboards
+* Multi-step approval and reverify loops
+* Full audit trail & timeline
+* Secure, permission-driven UI
+* Scalable architecture
+
+---
+
+## 🧑‍💼 Supported Roles
+
+| Role           | Responsibility                          |
+| -------------- | --------------------------------------- |
+| **Admin**      | User management, role assignment        |
+| **Operations** | Raise tickets, add clarification        |
+| **Leadership** | Review & comment                        |
+| **Management** | Take corrective action                  |
+| **Auditors**   | Final decision, approve/reject/reverify |
+
+---
+
+## 🔄 Workflow Design
+
+Ticket lifecycle:
+
+```
+SUBMITTED → FORWARDED_TO_MANAGEMENT → ACTION_TAKEN → CLOSED
+                   ↑
+                 REVERIFY
+```
+
+When an auditor selects **REVERIFY**, the workflow loops back allowing Operations, Leadership, and Management to add additional information. All updates are appended to history without deleting previous data.
 
 ---
 
 ## 🏗️ Architecture
 
 ```
-React + Redux Toolkit + RTK Query + DaisyUI
-        |
-        | REST API
-        |
-   JSON Server (Mock Backend)
-        |
-     db.json
+UI Components
+     ↓
+Layout (MainLayout, Sidebar, ProtectedRoute)
+     ↓
+Feature Modules (Operations, Management, Leadership, Audits, Admin)
+     ↓
+Redux Toolkit + RTK Query
+     ↓
+Backend APIs (JSON Server / Future Backend)
 ```
 
-> Backend design is documented separately for Java / Node.js implementation.
+* Feature-based modular structure
+* Centralized API handling via RTK Query
+* Role-driven UI rendering
+* Config-driven dashboards
 
 ---
 
-## 👥 User Roles
+## 📊 Dashboards
 
-| Role           | Responsibilities                                     |
-| -------------- | ---------------------------------------------------- |
-| **OPERATIONS** | Raise requests, view all tickets                     |
-| **LEADERSHIP** | Review requests, add comments, forward to management |
-| **MANAGEMENT** | Take actions on approved requests                    |
-| **AUDITORS**   | Final decision & compliance check                    |
+Each role has a **config-driven dashboard** with dynamic widgets:
 
----
+* KPI Cards
+* Pie Charts
+* Bar Charts
+* Line Charts
 
-## 🔁 Ticket Workflow Lifecycle
-
-```
-SUBMITTED
-   ↓
-FORWARDED_TO_MANAGEMENT
-   ↓
-ACTION_TAKEN
-   ↓
-CLOSED
-```
-
-Each stage is **strictly role-controlled**.
+Widgets load based on role configuration and fetch their own data.
 
 ---
 
-## 🧩 Key Features
-
-* 🔐 Role-based authentication & routing
-* 📝 Raise Request (Operations)
-* 🗣 Leadership Comment & Forward
-* 🛠 Management Action
-* ⚖ Auditor Final Decision
-* 🕒 Full status lifecycle
-* 📜 Audit log ready architecture
-* 🧪 Selenium test selectors (`data-testid`)
-* 🧱 Modular, enterprise folder structure
-
----
-
-## 🛠 Tech Stack
-
-### Frontend
-
-* React
-* Redux Toolkit
-* RTK Query
-* React Hook Form
-* Zod Validation
-* DaisyUI (Tailwind CSS)
-* React Router
-
-### Backend (Mock)
-
-* JSON Server
-
----
-
-## 📁 Folder Structure
+## 🗂️ Folder Structure
 
 ```
 src/
- ├── api/
- │   └── baseApi.js
- ├── auth/
- │   └── Login.jsx
- ├── layout/
- │   ├── MainLayout.jsx
- │   ├── ProtectedRoute.jsx
- │   └── Unauthorized.jsx
- ├── modules/
- │   ├── operations/
- │   ├── leadership/
- │   ├── management/
- │   ├── auditors/
- │   └── tickets/
- │       ├── components/
- │       ├── forms/
- │       ├── pages/
- │       └── validation/
- ├── routes/
- │   └── AppRoutes.jsx
- ├── utils/
- │   ├── roles.js
- │   └── ticketStatus.js
- └── main.jsx
+├── api/
+├── auth/
+├── layout/
+├── modules/
+│   ├── operations/
+│   ├── leadership/
+│   ├── management/
+│   ├── audits/
+│   ├── tickets/
+│   └── admin/
+├── components/
+├── utils/
+└── store/
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🛠️ Tech Stack
 
-### 1. Clone the Repo
-
-```bash
-git clone https://github.com/your-username/ieodp.git
-cd ieodp
-```
-
----
-
-### 2. Install Dependencies
-
-```bash
-npm install
-```
+* **React (Latest)**
+* **Redux Toolkit**
+* **RTK Query**
+* **React Hook Form + Zod**
+* **DaisyUI + Tailwind CSS**
+* **Recharts**
+* **React Router**
 
 ---
 
-### 3. Setup Environment
+## 🔐 Security & Permissions
 
-Create `.env` file in root:
-
-```env
-VITE_API_URL=http://localhost:5000
-```
-
----
-
-### 4. Start JSON Server
-
-```bash
-npx json-server --watch db.json --port 5000
-```
+* Role-based route protection
+* Permission-driven menu rendering
+* Component-level access control
+* Protected workflows
 
 ---
 
-### 5. Start Frontend
+## 🕒 Timeline & Auditability
 
-```bash
-npm run dev
-```
+Each ticket maintains a full history of actions:
 
----
+* Role
+* Action
+* Comment
+* Timestamp
 
-## 🔑 Login (Demo Mode)
-
-Use buttons on login page:
-
-* **Login as Operations**
-* **Login as Leadership**
-* **Login as Management**
-* **Login as Auditor**
-
-No password required (mock authentication).
+This provides complete audit trail and traceability.
 
 ---
 
-## 🧪 Selenium & Automation Ready
+## ⚡ Performance Engineering
 
-All critical fields have:
-
-```html
-id=""
-data-testid=""
-```
-
-Example:
-
-```html
-<textarea data-testid="leadership-comment-textarea" />
-```
-
-This enables:
-
-* Selenium
-* Cypress
-* Playwright automation
+* Lazy loaded dashboards
+* React.memo for heavy components
+* Memoized selectors
+* Optimized re-renders
+* Prepared for large datasets (10k+ rows)
 
 ---
 
-## 🧭 Routes
+## 🧪 Demo Data
 
-### Operations
-
-* `/operations/dashboard`
-* `/operations/requests`
-* `/operations/workflows`
-* `/operations/tasks`
-
-### Leadership
-
-* `/leadership/dashboard`
-* `/leadership/reviews`
-* `/leadership/insights`
-
-### Management
-
-* `/management/dashboard`
-* `/management/actions`
-* `/management/approvals`
-
-### Auditors
-
-* `/auditors/logs`
-* `/auditors/decisions`
+The project currently uses **JSON Server** for demo data.
 
 ---
 
-## 🔐 Authorization Rules
+## ▶️ How to Run
 
-| Role       | Can Do            |
-| ---------- | ----------------- |
-| OPERATIONS | Create ticket     |
-| LEADERSHIP | Comment & forward |
-| MANAGEMENT | Take action       |
-| AUDITORS   | Final decision    |
+1. Install dependencies
 
-Unauthorized access → redirected to **403 Unauthorized page**
+   ```bash
+   npm install
+   ```
 
----
+2. Start JSON Server
 
-## 📊 Workflow Enforcement
+   ```bash
+   npx json-server --watch db.json --port 5000
+   ```
 
-This app enforces **real enterprise rules**:
+3. Start frontend
 
-* Auditor **cannot see** tickets until Management acts
-* Management **cannot act** before Leadership review
-* Leadership **cannot close** ticket
-* Operations **cannot skip stages**
+   ```bash
+   npm run dev
+   ```
 
 ---
 
-## 📜 Backend Design
+## 📄 Documentation
 
-Backend is designed for:
+Detailed documentation is available in the `docs/` folder:
 
-* Java Spring Boot or Node.js
-* Role-based access control
-* Workflow enforcement
-* Audit logging
-* AI insights (future)
-
-📄 See: **Backend Architecture Document**
+* Architecture
+* State Management
+* Workflow Design
+* Security
+* Performance
 
 ---
 
-## 💡 Why This Project Is Different
+## 🌱 Future Enhancements
 
-This is **not a CRUD demo app**.
-
-This project demonstrates:
-
-* Real enterprise workflows
-* Role-based governance
-* Production folder structure
-* Workflow state machines
-* Authorization boundaries
-* Audit readiness
-
-This is the level expected in:
-
-* Enterprise systems
-* Corporate dashboards
-* Banking / compliance tools
-* SaaS admin platforms
+* File attachments
+* SLA tracking & escalation
+* Notification system
+* AI-assisted insights
+* Advanced audit reporting
 
 ---
 
-## 🧠 Learning Objectives
+## 🏁 Conclusion
 
-This project helps you understand:
-
-* How real enterprise workflows are designed
-* How roles control UI + backend logic
-* How to structure large React apps
-* How to enforce business rules at UI level
-* How to think like a **senior frontend engineer**
+IEODP is built as a **real enterprise workflow platform**, not a demo UI. It demonstrates complex workflows, multi-role collaboration, auditability, and scalable architecture.
 
 ---
 
-## 📌 Future Enhancements
+## 👨‍💻 Author
 
-* Audit log UI
-* Status timeline UI
-* AI risk insights
-* SLA tracking
-* Notifications
-* WebSockets
-* Real backend integration
+Developed by **Tumma Venkata Sai (Frontend Engineer)**
 
 ---
 
-## 🤝 Contribution
+## 📜 License
 
-This project is part of an **enterprise frontend engineering assessment** and is not open for public contribution.
-
----
-
-## 📄 License
-
-MIT License
-
----
-
-## 🏁 Final Note
-
-> This project is intentionally designed as **enterprise-grade**, not tutorial-grade.
-> Architecture, workflows, and structure follow **real production patterns**.
-
----
-
-
+This project is created for educational and assessment purposes.

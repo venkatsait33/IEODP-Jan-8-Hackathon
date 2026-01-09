@@ -1,7 +1,8 @@
 {
   "name": "intelligent-enterprise-operational-decision-platform",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "author": "Tumma Venkata Sai",
   "type": "module",
   "scripts": {
     "dev": "vite",

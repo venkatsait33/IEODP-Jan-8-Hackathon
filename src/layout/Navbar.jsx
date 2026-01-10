@@ -16,7 +16,7 @@ const Navbar = () => {
             <MotionDiv delay={0.1}>
                 <div className="navbar bg-base-100 shadow-sm md:px-10 max-sm:px-2 ">
                     <div className='flex-1'>
-                        <h1 className='text-xl font-semibold'>IEODP</h1>
+                        <Link to='/'  className='text-xl font-semibold'>IEODP</Link>
                     </div>
                     <div className='max-sm:hidden '>
                         <div>

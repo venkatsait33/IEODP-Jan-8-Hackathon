@@ -16,11 +16,13 @@ import Login from "../auth/login/Login";
 import Register from "../auth/register/Register";
 import AdminUsersPage from "../auth/admin/pages/AdminUsersPage";
 import AdminDashboard from "../auth/admin/pages/AdminDashboard";
+import RestPassword from "../auth/password-rest/RestPassword";
 
 
 export {
     Login,
     Register,
+    RestPassword,
     AdminUsersPage,
     AdminDashboard,
     ProtectedRoute,

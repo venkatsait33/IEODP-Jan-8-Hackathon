@@ -1,116 +1,33 @@
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { setCredentials } from "../authSlice";
-import { ROLES } from "../../utils/roles";
-import { loginSchema } from "./loginSchema";
+import MotionDiv from "../../utils/MotionDiv";
+import LoginForm from "./components/LoginForm";
 
 
 const Login = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting },
-    } = useForm({
-        resolver: zodResolver(loginSchema),
-    });
-
-    const onSubmit = (data) => {
-        const mockResponse = {
-            user: {
-                id: 1,
-                name: "Enterprise User",
-                email: data.email,
-                role: data.role,
-            },
-            token: "fake-jwt-token",
-        };
-
-        dispatch(setCredentials(mockResponse));
-
-        if (data.role === ROLES.OPERATIONS) navigate("/operations/dashboard");
-        if (data.role === ROLES.MANAGEMENT) navigate("/management/dashboard");
-        if (data.role === ROLES.LEADERSHIP) navigate("/leadership/dashboard");
-        if (data.role === ROLES.AUDITORS) navigate("/auditors/dashboard");
-        if (data.role === ROLES.ADMIN) navigate("/admin/dashboard");
-    };
+   
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-base-200">
-            <div className="card w-96 bg-base-100 shadow-xl p-6">
-                <h2 className="text-2xl font-bold mb-4">IEODP Login</h2>
-
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    {/* EMAIL */}
-                    <div>
-                        <label className="label">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input
-                            type="email"
-                            placeholder="user@corp.com"
-                            className="input input-bordered w-full"
-                            {...register("email")}
-                        />
-                        {errors.email && (
-                            <p className="text-error text-sm mt-1">{errors.email.message}</p>
-                        )}
+        <MotionDiv delay={0.3}>
+            <div className="min-h-screen flex items-center justify-center bg-base-200">
+                <div className="">
+                    <div className="hero card bg-gradient-to-br from-lime-500 to-lime-900">
+                        <div className="hero-content card-body flex-col lg:flex-row-reverse font-bold">
+                            <div>
+                                <LoginForm/>
+                            </div>
+                          
+                            <div className="text-center flex flex-col gap-4 lg:text-left">
+                                <h1 className="text-5xl font-bold">Login now!</h1>
+                                <h1 className="font-semibold ">Intelligent Enterprise Operations & Decision Platform</h1>
+                                <p className=" max-w-md text-sm sm:text-base leading-relaxed">
+                                    A unified platform to manage workflows, ensure compliance, and drive data-backed decisions across your organization.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-
-                    {/* PASSWORD */}
-                    <div>
-                        <label className="label">
-                            <span className="label-text">Password</span>
-                        </label>
-                        <input
-                            type="password"
-                            placeholder="Enter password"
-                            className="input input-bordered w-full"
-                            {...register("password")}
-                        />
-                        {errors.password && (
-                            <p className="text-error text-sm mt-1">
-                                {errors.password.message}
-                            </p>
-                        )}
-                    </div>
-
-                    {/* ROLE SELECT */}
-                    <div>
-                        <label className="label">
-                            <span className="label-text">Role</span>
-                        </label>
-                        <select
-                            className="select select-bordered w-full"
-                            {...register("role")}
-                        >
-                            <option value="">Select role</option>
-                            <option value={ROLES.OPERATIONS}>Operations</option>
-                            <option value={ROLES.MANAGEMENT}>Management</option>
-                            <option value={ROLES.LEADERSHIP}>Leadership</option>
-                            <option value={ROLES.AUDITORS}>Auditor</option>
-                            <option value={ROLES.ADMIN}>Admin</option>
-                        </select>
-                        {errors.role && (
-                            <p className="text-error text-sm mt-1">{errors.role.message}</p>
-                        )}
-                    </div>
-
-                    {/* SUBMIT */}
-                    <button
-                        type="submit"
-                        className="btn btn-primary w-full"
-                        disabled={isSubmitting}
-                    >
-                        {isSubmitting ? "Logging in..." : "Login"}
-                    </button>
-                </form>
+                </div>
+               
             </div>
-        </div>
+       </MotionDiv>
     );
 };
 

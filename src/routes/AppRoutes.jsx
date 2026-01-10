@@ -17,7 +17,8 @@ import {
     WorkflowProcessPage,
     Register,
     AdminUsersPage,
-    AdminDashboard
+    AdminDashboard,
+    RestPassword
 } from "./index";
 import { ROLES } from "../utils/roles";
 
@@ -25,11 +26,13 @@ const AppRoutes = () => {
     return (
         <Routes>
             {/* Public */}
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<div className="mt-0">
+                <HomePage />
+            </div>} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             {/* Admin */}
-            
+
             <Route
                 path="/admin/dashboard"
                 element={
@@ -193,11 +196,32 @@ const AppRoutes = () => {
             <Route
                 path="/workflow-process"
                 element={
-                    <ProtectedRoute allowedRoles={["OPERATIONS", "LEADERSHIP", "MANAGEMENT", "AUDITORS"]}>
-                        <MainLayout>
-                            <WorkflowProcessPage />
-                        </MainLayout>
-                    </ProtectedRoute>
+
+                    <MainLayout>
+                        <WorkflowProcessPage />
+                    </MainLayout>
+
+                }
+            />
+
+            <Route
+                path="/workflowprocess"
+                element={
+
+                    <div className="mt-8 p-4">
+                        <WorkflowProcessPage />
+                    </div>
+
+                }
+            />
+            <Route
+                path="/rest-password"
+                element={
+
+                    <>
+                        <RestPassword />
+                    </>
+
                 }
             />
 

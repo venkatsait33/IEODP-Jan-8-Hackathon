@@ -1,178 +1,32 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom";
-import { registerSchema } from "./registerSchema";
+import React from 'react'
+import MotionDiv from '../../utils/MotionDiv'
+import RegisterForm from './components/RegisterForm'
 
 const Register = () => {
-    const navigate = useNavigate();
+  return (
+      <MotionDiv delay={0.3}>
+          <div className="min-h-screen flex items-center justify-center bg-base-200">
+              <div className="">
+                  <div className="hero card bg-gradient-to-br from-lime-500 to-lime-900">
+                      <div className="hero-content card-body flex-col lg:flex-row-reverse font-bold">
+                          <div>
+                              <RegisterForm />
+                          </div>
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting },
-    } = useForm({
-        resolver: zodResolver(registerSchema),
-    });
+                          <div className="text-center flex flex-col gap-4 lg:text-left">
+                              <h1 className="text-5xl font-bold">Register now!</h1>
+                              <h1 className="font-semibold ">Intelligent Enterprise Operations & Decision Platform</h1>
+                              <p className=" max-w-md text-sm sm:text-base leading-relaxed">
+                                  A unified platform to manage workflows, ensure compliance, and drive data-backed decisions across your organization.
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
 
-    const onSubmit = (data) => {
-        console.log("Register Payload:", data);
+          </div>
+      </MotionDiv>
+  )
+}
 
-        // 👉 Here you will call backend API later
-        // For now, just redirect to login
-        alert("Registration successful! Please login.");
-        navigate("/login");
-    };
-
-    return (
-        <div className="min-h-screen flex items-center justify-center bg-base-200">
-            <div className="card w-full max-w-md bg-base-100 shadow-xl p-6">
-                <h2 className="text-2xl font-bold mb-4 text-center">
-                    Create Your Account
-                </h2>
-
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    {/* FIRST NAME */}
-                    <div>
-                        <label className="label">
-                            <span className="label-text">First Name</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Enter first name"
-                            className="input input-bordered w-full"
-                            {...register("firstName")}
-                        />
-                        {errors.firstName && (
-                            <p className="text-error text-sm">{errors.firstName.message}</p>
-                        )}
-                    </div>
-
-                    {/* LAST NAME */}
-                    <div>
-                        <label className="label">
-                            <span className="label-text">Last Name</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Enter last name"
-                            className="input input-bordered w-full"
-                            {...register("lastName")}
-                        />
-                        {errors.lastName && (
-                            <p className="text-error text-sm">{errors.lastName.message}</p>
-                        )}
-                    </div>
-
-                    {/* USERNAME */}
-                    <div>
-                        <label className="label">
-                            <span className="label-text">Username</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Choose a username"
-                            className="input input-bordered w-full"
-                            {...register("username")}
-                        />
-                        {errors.username && (
-                            <p className="text-error text-sm">{errors.username.message}</p>
-                        )}
-                    </div>
-
-                    {/* EMAIL */}
-                    <div>
-                        <label className="label">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input
-                            type="email"
-                            placeholder="user@corp.com"
-                            className="input input-bordered w-full"
-                            {...register("email")}
-                        />
-                        {errors.email && (
-                            <p className="text-error text-sm">{errors.email.message}</p>
-                        )}
-                    </div>
-
-                    {/* PASSWORD */}
-                    <div>
-                        <label className="label">
-                            <span className="label-text">Password</span>
-                        </label>
-                        <input
-                            type="password"
-                            placeholder="Enter password"
-                            className="input input-bordered w-full"
-                            {...register("password")}
-                        />
-                        {errors.password && (
-                            <p className="text-error text-sm">{errors.password.message}</p>
-                        )}
-                    </div>
-
-                    {/* MOBILE NUMBER */}
-                    <div>
-                        <label className="label">
-                            <span className="label-text">Mobile Number</span>
-                        </label>
-                        <input
-                            type="tel"
-                            placeholder="10-digit mobile number"
-                            className="input input-bordered w-full"
-                            {...register("mobileNumber")}
-                        />
-                        {errors.mobileNumber && (
-                            <p className="text-error text-sm">
-                                {errors.mobileNumber.message}
-                            </p>
-                        )}
-                    </div>
-
-                    {/* GENDER */}
-                    <div>
-                        <label className="label">
-                            <span className="label-text">Gender</span>
-                        </label>
-                        <select
-                            className="select select-bordered w-full"
-                            {...register("gender")}
-                        >
-                            <option value="">Select gender</option>
-                            <option value="MALE">Male</option>
-                            <option value="FEMALE">Female</option>
-                            <option value="OTHER">Other</option>
-                        </select>
-                        {errors.gender && (
-                            <p className="text-error text-sm">{errors.gender.message}</p>
-                        )}
-                    </div>
-
-                    {/* SUBMIT */}
-                    <button
-                        type="submit"
-                        className="btn btn-primary w-full"
-                        disabled={isSubmitting}
-                    >
-                        {isSubmitting ? "Creating account..." : "Register"}
-                    </button>
-
-                    {/* LOGIN LINK */}
-                    <div className="text-center mt-3">
-                        <span className="text-sm">
-                            Already have an account?{" "}
-                            <span
-                                className="link link-primary cursor-pointer"
-                                onClick={() => navigate("/login")}
-                            >
-                                Login
-                            </span>
-                        </span>
-                    </div>
-                </form>
-            </div>
-        </div>
-    );
-};
-
-export default Register;
+export default Register

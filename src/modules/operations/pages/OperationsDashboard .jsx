@@ -1,6 +1,6 @@
 import MotionDiv from "../../../utils/MotionDiv";
 import { BookCheck, ClipboardClock, BookAlert } from "lucide-react";
-
+import { motion } from "framer-motion"
 import {
     PieChart,
     Pie,
@@ -19,6 +19,7 @@ import {
 
 import { useGetTicketsQuery } from "../../tickets/ticketsApi";
 import { TICKET_STATUS } from "../../../utils/ticketStatus";
+import { fadeUp, fadeIn } from "../../../utils/motionUtils";
 
 const COLORS = ["#3b82f6", "#f59e0b", "#10b981", "#ef4444", "#a855f7"];
 
@@ -88,21 +89,27 @@ const OperationsDashboard = () => {
     return (
         <div className="space-y-6">
             {/* HEADER */}
-            <div>
+            <motion.div initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}>
                 <h1 className="text-2xl font-bold mb-4">Operations Dashboard</h1>
 
-                <MotionDiv delay={0.1}>
+                <motion.div variants={fadeUp}>
                     <div>
                         <h1 className="text-2xl font-semibold">Welcome back!</h1>
                         <span className="label">
-                            Here's your operational overview for today
+                            Here's your overview for today
                         </span>
                     </div>
-                </MotionDiv>
+                </motion.div>
 
                 {/* STATS CARDS */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
-                    <div className="p-4 rounded-xl shadow-md flex items-center gap-3 bg-base-200 hover:scale-105 transition">
+                <motion.div initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeIn} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+                    <motion.div variants={fadeUp} className="p-4 rounded-xl shadow-md flex items-center gap-3 bg-base-200 hover:scale-105 transition">
                         <div className="btn bg-blue-500 p-2">
                             <BookCheck />
                         </div>
@@ -110,9 +117,9 @@ const OperationsDashboard = () => {
                             <div className="text-sm">Active Tickets</div>
                             <div className="text-xl font-bold">{submittedCount + forwardedCount + actionTakenCount}</div>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="p-4 rounded-xl shadow-md flex items-center gap-3 bg-base-200 hover:scale-105 transition">
+                    <motion.div variants={fadeUp} className="p-4 rounded-xl shadow-md flex items-center gap-3 bg-base-200 hover:scale-105 transition">
                         <div className="btn bg-orange-500 p-2">
                             <ClipboardClock />
                         </div>
@@ -120,9 +127,9 @@ const OperationsDashboard = () => {
                             <div className="text-sm">Reverify Pending</div>
                             <div className="text-xl font-bold">{reverifyCount}</div>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="p-4 rounded-xl shadow-md flex items-center gap-3 bg-base-200 hover:scale-105 transition">
+                    <motion.div variants={fadeUp} className="p-4 rounded-xl shadow-md flex items-center gap-3 bg-base-200 hover:scale-105 transition">
                         <div className="btn bg-green-500 p-2">
                             <BookCheck />
                         </div>
@@ -130,9 +137,9 @@ const OperationsDashboard = () => {
                             <div className="text-sm">Closed Tickets</div>
                             <div className="text-xl font-bold">{closedCount}</div>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="p-4 rounded-xl shadow-md flex items-center gap-3 bg-base-200 hover:scale-105 transition">
+                    <motion.div variants={fadeUp} className="p-4 rounded-xl shadow-md flex items-center gap-3 bg-base-200 hover:scale-105 transition">
                         <div className="btn bg-red-500 p-2">
                             <BookAlert />
                         </div>
@@ -140,14 +147,17 @@ const OperationsDashboard = () => {
                             <div className="text-sm">Rejected</div>
                             <div className="text-xl font-bold">{rejectedCount}</div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </motion.div>
+                </motion.div>
+            </motion.div>
 
             {/* CHART GRID */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <motion.section initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn} className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {/* STATUS PIE */}
-                <div className="card bg-base-200 p-4 shadow">
+                <motion.div variants={fadeUp}  className="card bg-base-200 p-4 shadow">
                     <h2 className="font-semibold mb-2">Ticket Status Distribution</h2>
                     <ResponsiveContainer width="100%" height={250}>
                         <PieChart>
@@ -166,10 +176,10 @@ const OperationsDashboard = () => {
                             <Tooltip />
                         </PieChart>
                     </ResponsiveContainer>
-                </div>
+                </motion.div>
 
                 {/* PRIORITY BAR */}
-                <div className="card bg-base-200 p-4 shadow">
+                <motion.div variants={fadeUp} className="card bg-base-200 p-4 shadow">
                     <h2 className="font-semibold mb-2">Priority Distribution</h2>
                     <ResponsiveContainer width="100%" height={250}>
                         <BarChart data={priorityData}>
@@ -179,10 +189,10 @@ const OperationsDashboard = () => {
                             <Bar dataKey="value" fill="#3b82f6" radius={[4, 4, 0, 0]} />
                         </BarChart>
                     </ResponsiveContainer>
-                </div>
+                </motion.div>
 
                 {/* TREND LINE */}
-                <div className="card bg-base-200 p-4 shadow">
+                <motion.div variants={fadeUp} className="card bg-base-200 p-4 shadow">
                     <h2 className="font-semibold mb-2">Requests Over Time</h2>
                     <ResponsiveContainer width="100%" height={250}>
                         <LineChart data={trendData}>
@@ -199,8 +209,8 @@ const OperationsDashboard = () => {
                             />
                         </LineChart>
                     </ResponsiveContainer>
-                </div>
-            </div>
+                </motion.div>
+            </motion.section>
         </div>
     );
 };

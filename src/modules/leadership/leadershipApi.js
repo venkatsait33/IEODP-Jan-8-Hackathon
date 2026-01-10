@@ -3,7 +3,7 @@ import { baseApi } from "../../api/baseApi";
 export const leadershipApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getAiInsights: builder.query({
-            query: () => "/aiInsights",   // ✅ FIXED
+            query: () => "/aiInsights",  
             providesTags: ["Insights"],
         }),
 

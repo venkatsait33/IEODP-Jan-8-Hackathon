@@ -9,7 +9,7 @@ import {
 
 const BarChartWidget = ({ title, data }) => {
     return (
-        <div className="card bg-base-200 p-4 shadow">
+        <div className="card w-full bg-base-200 p-4 shadow">
             <h3 className="font-semibold mb-2">{title}</h3>
             <ResponsiveContainer width="100%" height={250}>
                 <BarChart data={data}>

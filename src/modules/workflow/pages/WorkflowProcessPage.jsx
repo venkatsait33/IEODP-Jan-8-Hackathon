@@ -1,4 +1,6 @@
 import { ArrowDown, ArrowRight, RotateCcw, CheckCircle, XCircle } from "lucide-react";
+import { fadeIn, fadeUp, staggerContainer } from "../../../utils/motionUtils";
+import { motion } from "framer-motion";
 
 const workflowSteps = [
     {
@@ -33,16 +35,28 @@ const workflowSteps = [
 
 const WorkflowProcessPage = () => {
     return (
-        <div className="space-y-8">
-            <h1 className="text-2xl font-bold">Workflow Process</h1>
-            <p className="text-base-content/70">
+        <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn} className="space-y-8">
+            <motion.h1 variants={fadeUp} className="text-2xl font-bold">Workflow Process</motion.h1>
+            <motion.p variants={fadeUp} className="text-base-content/70">
                 This diagram shows how a request flows across different roles in the organization.
-            </p>
+            </motion.p>
 
             {/* MAIN FLOW */}
-            <div className="flex flex-col items-center space-y-6">
+            <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+                className="flex flex-col items-center space-y-6">
                 {workflowSteps.map((step, index) => (
-                    <div key={step.role} className="flex flex-col items-center">
+                    <motion.div
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false, amount: 0.2 }}
+                        key={step.role} className="flex flex-col items-center">
                         {/* STEP CARD */}
                         <div
                             className={`card ${step.color} text-white p-4 md:w-86 shadow-lg`}
@@ -59,15 +73,23 @@ const WorkflowProcessPage = () => {
                         {index !== workflowSteps.length - 1 && (
                             <ArrowDown className="my-4 font-semibold " size={28} />
                         )}
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
 
             {/* DECISION BRANCH */}
-            <div className="mt-10">
-                <h2 className="text-xl font-semibold mb-4">Auditor Decision Outcomes</h2>
+            <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+                className="mt-10">
+                <motion.h2 variants={fadeUp} className="text-xl font-semibold mb-4">Auditor Decision Outcomes</motion.h2>
 
-                <div className="flex flex-col md:flex-row items-center gap-6">
+                <motion.div
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.2 }} className="flex flex-col md:flex-row items-center gap-6">
                     {/* APPROVED */}
                     <div className="card bg-success text-success-content p-4 w-64 shadow">
                         <div className="flex items-center gap-2 mb-1">
@@ -100,17 +122,17 @@ const WorkflowProcessPage = () => {
                             Ticket is sent back for re-verification and reprocessing.
                         </p>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* REVERIFY LOOP */}
-                <div className="mt-6 flex items-center gap-2 text-warning">
+                <motion.div variants={fadeUp} className="mt-6 flex items-center gap-2 text-warning">
                     <RotateCcw />
                     <span className="text-sm font-medium">
                         Reverify loops the ticket back to Leadership / Management stage
                     </span>
-                </div>
-            </div>
-        </div>
+                </motion.div>
+            </motion.div>
+        </motion.div>
     );
 };
 

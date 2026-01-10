@@ -14,9 +14,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { ROLES } from "../utils/roles";
 import { containerVariants, itemVariants } from "../utils/motionUtils";
 
-
-
-
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const navigate = useNavigate();
   const location = useLocation();

@@ -15,16 +15,29 @@ export const itemVariants = {
     },
 };
 
-export const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-};
-
-export const stagger = {
+export const staggerContainer = {
     hidden: {},
     visible: {
         transition: {
-            staggerChildren: 0.1
-        }
-    }
+            staggerChildren: 0.12,
+            delayChildren: 0.05,
+        },
+    },
+};
+
+export const fadeUp = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.45, ease: "easeOut" },
+    },
+};
+
+export const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { duration: 0.35 },
+    },
 };

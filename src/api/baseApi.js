@@ -23,6 +23,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 //     endpoints: () => ({}),
 // });
 
+// this is fetching the data from mock-json server
 
 export const baseApi = createApi({
     reducerPath: "api",
@@ -35,7 +36,7 @@ export const baseApi = createApi({
         "Approvals",
         "Insights",
         "Audits",
-        "Tickets", // 🔥 REQUIRED
+        "Tickets", // REQUIRED
     ],
     endpoints: () => ({}),
 });

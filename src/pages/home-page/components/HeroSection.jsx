@@ -2,20 +2,14 @@ import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { fadeIn, fadeUp, staggerContainer, } from "../../../utils/motionUtils";
 
-const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-};
+// const fadeUp = {
+//     hidden: { opacity: 0, y: 40 },
+//     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+// };
 
-const staggerContainer = {
-    hidden: {},
-    visible: {
-        transition: {
-            staggerChildren: 0.15
-        }
-    }
-};
+
 
 const HeroSection = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -107,7 +101,7 @@ const HeroSection = () => {
 
                 {/* IMAGES */}
                 <motion.div
-                    variants={staggerContainer}
+                    variants={fadeIn}
                     className="mt-12 flex max-md:overflow-x-auto gap-6 max-w-4xl w-full pb-6"
                 >
                     {[

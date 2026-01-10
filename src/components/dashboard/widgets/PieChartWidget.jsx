@@ -10,7 +10,7 @@ const COLORS = ["#3b82f6", "#f59e0b", "#10b981", "#ef4444", "#a855f7"];
 
 const PieChartWidget = ({ title, data }) => {
     return (
-        <div className="card bg-base-200 p-4 shadow">
+        <div className="card bg-base-200 w-full p-4 shadow">
             <h3 className="font-semibold mb-2">{title}</h3>
             <ResponsiveContainer width="100%" height={250}>
                 <PieChart>

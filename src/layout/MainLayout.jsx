@@ -24,7 +24,7 @@ const MainLayout = ({ children }) => {
       )}
 
       {/* Main Content */}
-      <div className="flex-1 p-4">
+      <div className="flex-1 p-4 ">
         <Breadcrumbs />
         {/* Top bar */}
         <div className="mb-4 md:hidden">
@@ -37,7 +37,6 @@ const MainLayout = ({ children }) => {
         </div>
 
         {children}
-        <ScrollUpButton />
       </div>
     </div>
   );

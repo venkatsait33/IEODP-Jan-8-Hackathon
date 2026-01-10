@@ -55,6 +55,30 @@ const DashboardRenderer = ({ config, tickets = [], users = [] }) => {
         }
     };
 
+    const buildUserTrend = (users, type) => {
+        const map = {};
+
+        users.forEach((u) => {
+            const date = new Date(u.createdAt).toLocaleDateString();
+
+            if (!map[date]) map[date] = 0;
+
+            if (type === "total") {
+                map[date] += 1;
+            }
+
+            if (type === "active" && u.status === "ACTIVE") {
+                map[date] += 1;
+            }
+        });
+
+        return Object.entries(map).map(([date, value]) => ({
+            date,
+            value,
+        }));
+    };
+
+
     // -------------------------
     // GROUPING ENGINE
     // -------------------------
@@ -79,14 +103,27 @@ const DashboardRenderer = ({ config, tickets = [], users = [] }) => {
                 const sourceData = widget.source === "users" ? users : tickets;
 
                 switch (widget.type) {
-                    case "KPI":
+                    case "KPI": {
+                        let trendData = [];
+
+                        if (widget.metric === "totalUsers") {
+                            trendData = buildUserTrend(users, "total");
+                        }
+
+                        if (widget.metric === "activeUsers") {
+                            trendData = buildUserTrend(users, "active");
+                        }
+
                         return (
                             <KPIWidget
                                 key={widget.id}
                                 title={widget.title}
                                 value={computeMetric(widget.metric, sourceData)}
+                                trendData={trendData}
                             />
                         );
+                    }
+
 
                     case "PIE_CHART":
                         return (

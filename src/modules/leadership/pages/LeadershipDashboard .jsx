@@ -1,19 +1,11 @@
-import {
-  PieChart,
-  Pie,
-  Cell,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
-
 import { useGetTicketsQuery } from "../../tickets/ticketsApi";
 import { TICKET_STATUS } from "../../../utils/ticketStatus";
+import { fadeIn, fadeUp } from "../../../utils/motionUtils";
+import { motion } from "framer-motion";
+import { BadgeAlert, CircleX, FileChartColumnIncreasing, SquareChevronRight } from "lucide-react";
+import PieChartWidget from "../../../components/dashboard/widgets/PieChartWidget";
+import BarChartWidget from "../../../components/dashboard/widgets/BarChartWidget";
 
-const COLORS = ["#3b82f6", "#f59e0b", "#10b981", "#ef4444", "#a855f7"];
 
 const LeadershipDashboard = () => {
   const { data: tickets = [], isLoading } = useGetTicketsQuery();
@@ -59,36 +51,79 @@ const LeadershipDashboard = () => {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold mb-4">Leadership Dashboard</h1>
+      <motion.div initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}>
+
+        <h1 className="text-2xl font-bold mb-4">Leadership Dashboard</h1>
+        <motion.div variants={fadeUp}>
+          <div>
+            <h1 className="text-2xl font-semibold">Welcome back!</h1>
+            <span className="label">
+              Here's your overview for today
+            </span>
+          </div>
+        </motion.div>
+      </motion.div>
 
       {/* STATS CARDS */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="card bg-base-200 p-4 shadow">
-          <div className="text-sm">Pending Reviews</div>
-          <div className="text-2xl font-bold">{pendingReviews.length}</div>
-        </div>
+      <motion.div initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <motion.div variants={fadeUp} className="p-4 rounded-xl shadow-md flex items-center gap-3 bg-base-200 hover:scale-105 transition">
+          <div className="btn btn-accent p-2">
+            <FileChartColumnIncreasing />
+          </div>
+          <div>
 
-        <div className="card bg-base-200 p-4 shadow">
-          <div className="text-sm">Forwarded to Management</div>
-          <div className="text-2xl font-bold">{forwardedToManagement.length}</div>
-        </div>
+            <div className="text-sm">Pending Reviews</div>
+            <div className="text-2xl font-bold">{pendingReviews.length}</div>
+          </div>
+        </motion.div>
 
-        <div className="card bg-base-200 p-4 shadow">
-          <div className="text-sm">Reverify</div>
-          <div className="text-2xl font-bold">{reverifyCount}</div>
-        </div>
+        <motion.div variants={fadeUp} className="p-4 rounded-xl shadow-md flex items-center gap-3 bg-base-200 hover:scale-105 transition">
+          <div className="btn btn-info p-2">
+            <SquareChevronRight />           </div>
+          <div>
 
-        <div className="card bg-base-200 p-4 shadow">
-          <div className="text-sm">Rejected</div>
-          <div className="text-2xl font-bold">{rejectedCount}</div>
-        </div>
-      </div>
+            <div className="text-sm">Forwarded to Management</div>
+            <div className="text-2xl font-bold">{forwardedToManagement.length}</div>
+          </div>
+        </motion.div>
+
+        <motion.div variants={fadeUp} className="p-4 rounded-xl shadow-md flex items-center gap-3 bg-base-200 hover:scale-105 transition">
+          <div className="btn btn-warning p-2">
+            <BadgeAlert />
+          </div>
+          <div>
+
+            <div className="text-sm">Reverify</div>
+            <div className="text-2xl font-bold">{reverifyCount}</div>
+          </div>
+        </motion.div>
+
+        <motion.div variants={fadeUp} className="p-4 rounded-xl shadow-md flex items-center gap-3 bg-base-200 hover:scale-105 transition">
+          <div className="btn btn-error p-2">
+            <CircleX />
+          </div>
+          <div>
+
+            <div className="text-sm">Rejected</div>
+            <div className="text-2xl font-bold">{rejectedCount}</div>
+          </div>
+        </motion.div>
+      </motion.div>
 
       {/* CHART GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <motion.div
+        whileInView="visible"
+        variants={fadeIn} className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {/* STATUS PIE */}
-        <div className="card bg-base-200 p-4 shadow">
-          <h2 className="font-semibold mb-2">Ticket Status Distribution</h2>
+        <motion.div variants={fadeUp} className="card bg-base-200 p-4 shadow">
+          <PieChartWidget title={"Ticket Status Distribution"} data={statusData} />
+          {/* <h2 className="font-semibold mb-2">Ticket Status Distribution</h2>
           <ResponsiveContainer width="100%" height={250}>
             <PieChart>
               <Pie
@@ -105,12 +140,13 @@ const LeadershipDashboard = () => {
               </Pie>
               <Tooltip />
             </PieChart>
-          </ResponsiveContainer>
-        </div>
+          </ResponsiveContainer> */}
+        </motion.div>
 
         {/* PRIORITY BAR */}
-        <div className="card bg-base-200 p-4 shadow">
-          <h2 className="font-semibold mb-2">Priority Distribution</h2>
+        <motion.div variants={fadeUp} className="card bg-base-200 p-4 shadow">
+          <BarChartWidget title={"Priority Distribution"} data={priorityData} />
+          {/* <h2 className="font-semibold mb-2">Priority Distribution</h2>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={priorityData}>
               <XAxis dataKey="name" />
@@ -118,9 +154,9 @@ const LeadershipDashboard = () => {
               <Tooltip />
               <Bar dataKey="value" fill="#3b82f6" radius={[4, 4, 0, 0]} />
             </BarChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
+          </ResponsiveContainer> */}
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

@@ -23,7 +23,7 @@ const Login = () => {
         if (role === ROLES.OPERATIONS) navigate("/operations/dashboard");
         if (role === ROLES.MANAGEMENT) navigate("/management/dashboard");
         if (role === ROLES.LEADERSHIP) navigate("/leadership/dashboard");
-        if (role === ROLES.AUDITORS) navigate("/auditors/dashboard"); // ✅ FIXED
+        if (role === ROLES.AUDITORS) navigate("/auditors/dashboard"); //
     };
 
     return (

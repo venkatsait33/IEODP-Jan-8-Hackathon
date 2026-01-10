@@ -54,13 +54,13 @@
 // export const operationsApi = baseApi.injectEndpoints({
 //     endpoints: (builder) => ({
 //         getWorkflows: builder.query({
-//             query: () => "/workflows",   // ✅ FIXED
+//             query: () => "/workflows",   
 //             providesTags: ["Workflows"],
 //         }),
 
 //         createWorkflow: builder.mutation({
 //             query: (data) => ({
-//                 url: "/workflows",        // ✅ FIXED
+//                 url: "/workflows",        
 //                 method: "POST",
 //                 body: data,
 //             }),
@@ -68,13 +68,13 @@
 //         }),
 
 //         getTasks: builder.query({
-//             query: () => "/tasks",      // ✅ FIXED
+//             query: () => "/tasks",      
 //             providesTags: ["Tasks"],
 //         }),
 
 //         updateTaskStatus: builder.mutation({
 //             query: ({ taskId, status }) => ({
-//                 url: `/tasks/${taskId}`,  // ✅ FIXED
+//                 url: `/tasks/${taskId}`,  
 //                 method: "PATCH",
 //                 body: { status },
 //             }),

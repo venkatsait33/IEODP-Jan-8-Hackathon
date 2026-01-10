@@ -1,5 +1,3 @@
-
-
 import { toast } from "react-toastify";
 import { useUpdateUserMutation } from "../../userApi";
 import { ROLES } from "../../../utils/roles";

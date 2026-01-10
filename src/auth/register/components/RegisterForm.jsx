@@ -37,6 +37,7 @@ const RegisterForm = () => {
                             <span className="label-text">First Name</span>
                         </label>
                         <input
+                            data-testid="firstName"
                             type="text"
                             placeholder="Enter first name"
                             className="input input-bordered w-full"
@@ -53,6 +54,7 @@ const RegisterForm = () => {
                             <span className="label-text">Last Name</span>
                         </label>
                         <input
+                            data-testid="lastName"
                             type="text"
                             placeholder="Enter last name"
                             className="input input-bordered w-full"
@@ -69,6 +71,7 @@ const RegisterForm = () => {
                             <span className="label-text">Username</span>
                         </label>
                         <input
+                            data-testid="username"
                             type="text"
                             placeholder="Choose a username"
                             className="input input-bordered w-full"
@@ -85,6 +88,7 @@ const RegisterForm = () => {
                             <span className="label-text">Email</span>
                         </label>
                         <input
+                            data-testid="email"
                             type="email"
                             placeholder="user@corp.com"
                             className="input input-bordered w-full"
@@ -101,6 +105,7 @@ const RegisterForm = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input
+                            data-testid="password"
                             type="password"
                             placeholder="Enter password"
                             className="input input-bordered w-full"
@@ -117,6 +122,7 @@ const RegisterForm = () => {
                             <span className="label-text">Mobile Number</span>
                         </label>
                         <input
+                            data-testid="mobileNumber"
                             type="tel"
                             placeholder="10-digit mobile number"
                             className="input input-bordered w-full"
@@ -135,6 +141,7 @@ const RegisterForm = () => {
                             <span className="label-text">Gender</span>
                         </label>
                         <select
+                            data-testid="gender"
                             className="select select-bordered w-full"
                             {...register("gender")}
                         >
@@ -150,6 +157,7 @@ const RegisterForm = () => {
 
                     {/* SUBMIT */}
                     <button
+                        data-testid="submit"
                         type="submit"
                         className="btn btn-primary w-full"
                         disabled={isSubmitting}
@@ -162,6 +170,7 @@ const RegisterForm = () => {
                         <span className="text-sm">
                             Already have an account?{" "}
                             <span
+                                data-testid="login-link"
                                 className="link link-primary cursor-pointer"
                                 onClick={() => navigate("/login")}
                             >

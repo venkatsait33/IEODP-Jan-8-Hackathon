@@ -8,6 +8,8 @@ import AuditorDecisionForm from "../forms/AuditorDecisionForm";
 import { ROLES } from "../../../utils/roles";
 import { TICKET_STATUS } from "../../../utils/ticketStatus";
 import AuditTimeline from "../../audits/components/AuditTimeline";
+import { fadeIn, fadeUp } from "../../../utils/motionUtils";
+import { motion } from "framer-motion";
 
 const TicketDetailsPage = () => {
     const { id } = useParams();
@@ -23,9 +25,12 @@ const TicketDetailsPage = () => {
     }
 
     return (
-        <div className="space-y-6">
+        <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn} className="space-y-6">
             {/* Header */}
-            <div className="card bg-base-200 p-4 shadow">
+            <motion.div variants={fadeUp} className="card bg-base-200 p-4 shadow">
                 <h1 className="text-2xl font-bold mb-1">{ticket.title}</h1>
                 <p className="text-sm mb-2">{ticket.description}</p>
 
@@ -36,7 +41,7 @@ const TicketDetailsPage = () => {
                 <h1>WorkFlow</h1>
                 <TicketTimeline status={ticket?.status}
                     auditorDecision={ticket?.auditorDecision} />
-            </div>
+            </motion.div>
 
             {/* Leadership Section */}
             {role === ROLES.LEADERSHIP && ticket.status === TICKET_STATUS.SUBMITTED && (
@@ -55,7 +60,7 @@ const TicketDetailsPage = () => {
             )}
 
             {/* Read-only info blocks */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {ticket.leadershipComment && (
                     <div className="card bg-base-100 p-4 shadow">
                         <h3 className="font-semibold mb-1">Leadership Comment</h3>
@@ -64,22 +69,25 @@ const TicketDetailsPage = () => {
                 )}
 
                 {ticket.managementAction && (
-                    <div className="card bg-base-100 p-4 shadow">
+                    <motion.div variants={fadeUp} className="card bg-base-100 p-4 shadow">
                         <h3 className="font-semibold mb-1">Management Action</h3>
                         <p className="text-sm">{ticket.managementAction}</p>
-                    </div>
+                    </motion.div>
                 )}
 
                 {ticket.auditorDecision && (
-                    <div className="card bg-base-100 p-4 shadow">
+                    <motion.div variants={fadeUp} className="card bg-base-100 p-4 shadow">
                         <h3 className="font-semibold mb-1">Auditor Decision</h3>
                         <p className="text-sm">{ticket.auditorDecision}</p>
-                    </div>
+                    </motion.div>
                 )}
-                <AuditTimeline  entityId={ticket.id} />
+                <motion.div variants={fadeUp}>
 
-            </div>
-        </div>
+                    <AuditTimeline entityId={ticket.id} />
+                </motion.div>
+
+            </motion.div>
+        </motion.div>
     );
 };
 

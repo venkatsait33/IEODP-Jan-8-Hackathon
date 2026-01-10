@@ -1,6 +1,6 @@
 import { ClipboardPlus, LayoutDashboard, Users, Workflow } from "lucide-react";
 import { motion } from "framer-motion";
-import { fadeUp, stagger } from "../../../utils/motionUtils";
+import { fadeUp, fadeIn } from "../../../utils/motionUtils";
 
 
 
@@ -10,7 +10,7 @@ const KeyCapabilities = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      variants={stagger}
+      variants={fadeIn}
       className="p-2 m-2"
     >
       <motion.h1

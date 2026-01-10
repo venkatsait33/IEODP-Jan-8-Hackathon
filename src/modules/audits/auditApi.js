@@ -3,11 +3,11 @@
 // export const auditApi = baseApi.injectEndpoints({
 //     endpoints: (builder) => ({
 //         // getAuditLogs: builder.query({
-//         //     query: () => "/auditLogs",   // ✅ FIXED
+//         //     query: () => "/auditLogs",   
 //         //     providesTags: ["Audits"],
 //         // }),
 //         getAuditLogs: builder.query({
-//             query: () => "/auditLogs",   // ✅ flat, no pagination
+//             query: () => "/auditLogs",   //flat, no pagination
 //             providesTags: ["Audits"],
 //         }),
 //         getAuditLogsByEntity: builder.query({
@@ -18,7 +18,7 @@
 
 //         logAudit: builder.mutation({
 //             query: (data) => ({
-//                 url: "/auditLogs",        // ✅ FIXED
+//                 url: "/auditLogs",        
 //                 method: "POST",
 //                 body: data,
 //             }),

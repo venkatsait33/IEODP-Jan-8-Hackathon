@@ -3,7 +3,7 @@ import { baseApi } from "../../api/baseApi";
 export const managementApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getPendingApprovals: builder.query({
-            query: () => "/approvals",   // ✅ FIXED
+            query: () => "/approvals",   
             providesTags: ["Approvals"],
         }),
 

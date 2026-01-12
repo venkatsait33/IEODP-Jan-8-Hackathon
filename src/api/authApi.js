@@ -9,6 +9,39 @@ import { baseApi } from "./baseApi";
 //                 body: credentials,
 //             }),
 //         }),
+// refreshToken: builder.mutation({
+//     query: (refreshToken) => ({
+//         url: "/auth/refresh",
+//         method: "POST",
+//         body: { refreshToken },
+//     }),
+// }),
+
+// forgotPassword: builder.mutation({
+//     query: (email) => ({
+//         url: "/auth/forgot-password",
+//         method: "POST",
+//         body: { email },
+//     }),
+// }),
+
+//     verifyOtp: builder.mutation({
+//         query: (data) => ({
+//             url: "/auth/verify-otp",
+//             method: "POST",
+//             body: data,
+//         }),
+//     }),
+
+//         resetPassword: builder.mutation({
+//             query: (data) => ({
+//                 url: "/auth/reset-password",
+//                 method: "POST",
+//                 body: data,
+//             }),
+//         }),
+
+
 
 //         logout: builder.mutation({
 //             query: () => ({
@@ -19,7 +52,7 @@ import { baseApi } from "./baseApi";
 //     }),
 // });
 
-// export const { useLoginMutation, useLogoutMutation } = authApi;
+// export const { useLoginMutation,useRefreshTokenMutation , useLogoutMutation } = authApi;
 
 
 export const authApi = baseApi.injectEndpoints({

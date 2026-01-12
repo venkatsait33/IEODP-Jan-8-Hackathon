@@ -15,6 +15,11 @@ export const ticketsApi = baseApi.injectEndpoints({
             providesTags: ["Tickets"],
         }),
 
+        getTicketById: builder.query({
+            query: (id) => `/tickets/${id}`,
+            providesTags: (result, error, id) => [{ type: "Tickets", id }],
+        }),
+
         createTicket: builder.mutation({
             query: (data) => ({
                 url: "/tickets",
@@ -32,6 +37,14 @@ export const ticketsApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ["Tickets"],
         }),
+        addTicketAction: builder.mutation({
+            query: ({ ticketId, action, comment }) => ({
+                url: `/tickets/${ticketId}/action`,
+                method: "POST",
+                body: { action, comment },
+            }),
+            invalidatesTags: ["Tickets"],
+        })
     }),
 });
 
@@ -39,4 +52,6 @@ export const {
     useGetTicketsQuery,
     useCreateTicketMutation,
     useUpdateTicketMutation,
+    useAddTicketActionMutation,
+    useGetTicketByIdQuery
 } = ticketsApi;

@@ -27,7 +27,7 @@ const ManagementActionForm = ({ ticket }) => {
                 },
             }).unwrap();
 
-            
+            toast.success("Action recorded successfully.");
         } catch (error) {
             console.error("Management action failed:", error);
             toast.error("Failed to record action. Try again.");

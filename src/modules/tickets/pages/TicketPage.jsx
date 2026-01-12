@@ -12,7 +12,7 @@ import { fadeIn, fadeUp, staggerContainer } from "../../../utils/motionUtils";
 const TicketsPage = () => {
     const [filters, setFilters] = useState({
         page: 1,
-        limit: 5,
+        limit: 10,
         status: "",
         priority: "",
         search: "",

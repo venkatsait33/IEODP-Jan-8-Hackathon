@@ -77,7 +77,7 @@ const AuditorDecisionForm = ({ ticket }) => {
                 {...register("auditorDecision")}
             >
                 <option value="">Select decision</option>
-                <option value="ACCEPTED">Approve</option>
+                <option value="APPROVED">Approved</option>
                 <option value="REVERIFY">Reverify</option>
                 <option value="REJECTED">Reject</option>
             </select>

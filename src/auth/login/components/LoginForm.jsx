@@ -10,6 +10,28 @@ const LoginForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    
+    //Use this when we use backend APi for login
+    //   { 
+        // const [login, { isLoading }] = useLoginMutation();
+    //const handleSubmit = async (data) => {
+//         try {
+//             const res = await login(data).unwrap();
+
+//             dispatch(
+//                 setCredentials({
+//                     user: res.user,
+//                     accessToken: res.accessToken,
+//                 })
+//             );
+
+//             setRefreshToken(res.refreshToken);
+
+//             navigate(`/${res.user.role.toLowerCase()}/dashboard`);
+//         } catch (err) {
+//             alert("Login failed");
+//         }
+//     };}
     const {
         register,
         handleSubmit,

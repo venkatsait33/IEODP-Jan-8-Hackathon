@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useGetTicketsQuery } from "../ticketsApi";
+import { useGetTicketByIdQuery } from "../ticketsApi";
 import TicketTimeline from "../components/TicketTimeline";
 import LeadershipCommentForm from "../forms/LeadershipCommentForm";
 import ManagementActionForm from "../forms/ManagementActionForm";
@@ -14,15 +14,24 @@ import { motion } from "framer-motion";
 const TicketDetailsPage = () => {
     const { id } = useParams();
     const { role } = useSelector((state) => state.auth);
-    const { data: tickets = [], isLoading } = useGetTicketsQuery();
+    const { data: ticket, isLoading } = useGetTicketByIdQuery(id, {
+        refetchOnMountOrArgChange: true
+    });
 
     if (isLoading) return <div className="loading loading-spinner" />;
-
-    const ticket = tickets.find((t) => String(t.id) === String(id));
 
     if (!ticket) {
         return <div className="alert alert-error">Ticket not found</div>;
     }
+    const canLeadershipAct =
+        ticket.status === TICKET_STATUS.SUBMITTED ||
+        ticket.status === TICKET_STATUS.REVERIFY;
+
+    const canManagementAct =
+        ticket.status === TICKET_STATUS.FORWARDED_TO_MANAGEMENT ||
+        ticket.status === TICKET_STATUS.REVERIFY;
+
+    const canAuditorAct = ticket.status === TICKET_STATUS.ACTION_TAKEN;
 
     return (
         <motion.div
@@ -44,18 +53,18 @@ const TicketDetailsPage = () => {
             </motion.div>
 
             {/* Leadership Section */}
-            {role === ROLES.LEADERSHIP && ticket.status === TICKET_STATUS.SUBMITTED && (
+            {role === ROLES.LEADERSHIP && canLeadershipAct && (
                 <LeadershipCommentForm ticket={ticket} />
             )}
 
             {/* Management Section */}
             {role === ROLES.MANAGEMENT &&
-                ticket.status === TICKET_STATUS.FORWARDED_TO_MANAGEMENT && (
+                canManagementAct && (
                     <ManagementActionForm ticket={ticket} />
                 )}
 
             {/* Auditor Section */}
-            {role === ROLES.AUDITORS && ticket.status === TICKET_STATUS.ACTION_TAKEN && (
+            {role === ROLES.AUDITORS && canAuditorAct && (
                 <AuditorDecisionForm ticket={ticket} />
             )}
 

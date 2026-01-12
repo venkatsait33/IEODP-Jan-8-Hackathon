@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
 import { registerSchema } from "../registerSchema";
+import { toast } from "react-toastify";
 
 const RegisterForm = () => {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ const RegisterForm = () => {
 
         // 👉 Here you will call backend API later
         // For now, just redirect to login
-        alert("Registration successful! Please login.");
+        toast.success("Registration successful! Please login.");
         navigate("/login");
     };
 

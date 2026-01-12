@@ -154,6 +154,17 @@
       "previousState": "ACTION_TAKEN",
       "newState": "REVERIFY",
       "timestamp": "2026-01-09T10:38:53.054Z"
+    },
+    {
+      "id": "c313",
+      "entity": "TICKET",
+      "entityId": "69c5",
+      "userName": "Enterprise User",
+      "role": "AUDITORS",
+      "action": "AUDITOR_APPROVED",
+      "previousState": "ACTION_TAKEN",
+      "newState": "CLOSED",
+      "timestamp": "2026-01-12T05:59:56.734Z"
     }
   ],
   "tickets": [
@@ -216,6 +227,30 @@
       "managementAction": "Management component is working correctly ",
       "auditorDecision": "REVERIFY",
       "createdAt": "2026-01-09T10:36:40.747Z"
+    },
+    {
+      "id": "69c5",
+      "title": "testing ",
+      "description": "testing 12-1-2026",
+      "priority": "MEDIUM",
+      "status": "CLOSED",
+      "raisedBy": 1,
+      "leadershipComment": "leadership testing ",
+      "managementAction": "management action",
+      "auditorDecision": "APPROVED",
+      "createdAt": "2026-01-12T05:50:12.414Z"
+    },
+    {
+      "id": "855b",
+      "title": "testing wiith getTicketById",
+      "description": "Get Ticket Details by id and update the page when there is any update in the workFLow",
+      "priority": "HIGH",
+      "status": "FORWARDED_TO_MANAGEMENT",
+      "raisedBy": 1,
+      "leadershipComment": "added the comment from leadership form",
+      "managementAction": "",
+      "auditorDecision": "",
+      "createdAt": "2026-01-12T06:18:06.914Z"
     }
   ]
 }

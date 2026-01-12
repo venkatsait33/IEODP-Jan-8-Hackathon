@@ -1,4 +1,4 @@
-import { FacebookIcon, Linkedin, LinkedinIcon, TwitterIcon, Youtube } from 'lucide-react'
+import { FacebookIcon, Linkedin,  TwitterIcon, Youtube } from 'lucide-react'
 import React from 'react'
 
 const Footer = () => {

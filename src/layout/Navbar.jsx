@@ -16,7 +16,7 @@ const Navbar = () => {
             <MotionDiv delay={0.1}>
                 <div className="navbar bg-base-100 shadow-sm md:px-10 max-sm:px-2 ">
                     <div className='flex-1'>
-                        <Link to='/'  className='text-xl font-semibold'>IEODP</Link>
+                        <Link to='/' className='text-xl font-semibold'>IEODP</Link>
                     </div>
                     <div className='max-sm:hidden '>
                         <div>
@@ -64,28 +64,32 @@ const Navbar = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <div className=" ">
-                                    <div
+                            {
+                                user &&
 
-                                        className="flex border-l md:pl-2 border-gray-300 justify-between items-center md:gap-3 max-sm:gap-1 "
-                                    >
-                                        <figure className="w-12 max-sm:w-10 cursor-pointer">
-                                            <img
-                                                alt="Tailwind CSS Navbar component"
-                                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                                                className="rounded-full p-1"
-                                            />
-                                        </figure>
-                                        <div>
-                                            <h1 className=" font-semibold max-sm:text-sm">
-                                                User Name
-                                            </h1>
-                                            <span className="label max-sm:text-xs">Role</span>
+                                <div>
+                                    <div className=" ">
+                                        <div
+
+                                            className="flex border-l md:pl-2 border-gray-300 justify-between items-center md:gap-3 max-sm:gap-1 "
+                                        >
+                                            <figure className="w-12 max-sm:w-10 cursor-pointer">
+                                                <img
+                                                    alt="Tailwind CSS Navbar component"
+                                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                                                    className="rounded-full p-1"
+                                                />
+                                            </figure>
+                                            <div>
+                                                <h1 className=" font-semibold max-sm:text-sm">
+                                                    User Name
+                                                </h1>
+                                                <span className="label max-sm:text-xs">Role</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
                             <div className='flex items-center gap-3'>
                                 {/* <h1>UserName</h1> */}
                                 {!user &&

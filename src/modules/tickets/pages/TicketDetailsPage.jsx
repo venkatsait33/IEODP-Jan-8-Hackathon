@@ -7,7 +7,7 @@ import { TICKET_STATUS } from "../../../utils/ticketStatus";
 import AuditTimeline from "../../audits/components/AuditTimeline";
 import { fadeIn, fadeUp } from "../../../utils/motionUtils";
 import { motion } from "framer-motion";
-import LeadershipCommentForm from "../forms/LeadershipCommentForm";
+import LeaderShipCommentForm from "../forms/LeaderShipCommentForm";
 import ManagementActionForm from "../forms/ManagementActionForm";
 import AuditorDecisionForm from "../forms/AuditorDecisionForm";
 
@@ -54,7 +54,7 @@ const TicketDetailsPage = () => {
 
             {/* Leadership Section */}
             {role === ROLES.LEADERSHIP && canLeadershipAct && (
-                <LeadershipCommentForm ticket={ticket} />
+                <LeaderShipCommentForm ticket={ticket} />
             )}
 
             {/* Management Section */}

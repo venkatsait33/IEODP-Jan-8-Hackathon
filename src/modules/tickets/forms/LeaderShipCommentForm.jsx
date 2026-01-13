@@ -4,7 +4,7 @@ import { useUpdateTicketMutation } from "../ticketsApi";
 import { leadershipCommentSchema } from "../validation/ticketSchema";
 import { toast } from "react-toastify";
 
-const LeadershipCommentForm = ({ ticket }) => {
+const LeaderShipCommentForm = ({ ticket }) => {
     const [updateTicket] = useUpdateTicketMutation();
 
     const {
@@ -59,4 +59,4 @@ const LeadershipCommentForm = ({ ticket }) => {
     );
 };
 
-export default LeadershipCommentForm;
+export default LeaderShipCommentForm;

@@ -1,11 +1,15 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, NavLink, } from 'react-router-dom'
 import { logout } from '../auth/authSlice'
 import { Bell, Moon, Sun } from 'lucide-react'
 import MotionDiv from '../utils/MotionDiv'
 
 const Navbar = () => {
+    const linkClass = ({ isActive }) =>
+        isActive
+            ? "text-primary font-semibold tab tab-active"
+            : "hover:text-primary transition tab";
     const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch()
     const handleLogout = () => {
@@ -15,13 +19,54 @@ const Navbar = () => {
         <div className="fixed  inset-x-0 top-0 z-10  backdrop-blur-md border-b border-primary/20  shadow-lg">
             <MotionDiv delay={0.1}>
                 <div className="navbar bg-base-100 shadow-sm md:px-10 max-sm:px-2 ">
-                    <div className='flex-1'>
+                    <div className='md:flex-1 max-sm:flex max-sm:items-center pr-2'>
+                        <div className="dropdown">
+                            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                            </div>
+                            <ul
+                                tabIndex="-1"
+                                className="tabs tabs-border flex flex-col dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                <li> <NavLink to="/" role='tab' className={linkClass}>
+                                    Home
+                                </NavLink></li>
+                                <li>
+                                    <NavLink to="/about" role='tab' className={linkClass}>
+                                        About
+                                    </NavLink>
+                                    
+                                </li>
+                                <li> <NavLink to="/support" role='tab' className={linkClass}>
+                                    Support
+                                </NavLink></li>
+                                <li>   <NavLink to="/contact" role='tab' className={linkClass}>
+                                    Contact
+                                </NavLink></li>
+                            </ul>
+                        </div>
                         <Link to='/' className='text-xl font-semibold'>IEODP</Link>
                     </div>
                     <div className='max-sm:hidden '>
                         <div>
                             <input type="text" placeholder="Search" className="input input-bordered   md:w-auto" />
                         </div>
+                    </div>
+                    <div role="tablist" className="tabs tabs-border hidden lg:flex" >
+                        <NavLink to="/" role='tab' className={linkClass}>
+                            Home
+                        </NavLink>
+
+                        <NavLink to="/about" role='tab' className={linkClass}>
+                            About
+                        </NavLink>
+
+                        <NavLink to="/support" role='tab' className={linkClass}>
+                            Support
+                        </NavLink>
+
+                        <NavLink to="/contact" role='tab' className={linkClass}>
+                            Contact
+                        </NavLink>
                     </div>
                     <div className=' md:navbar-end '>
                         <div className='flex justify-between items-center gap-4'>

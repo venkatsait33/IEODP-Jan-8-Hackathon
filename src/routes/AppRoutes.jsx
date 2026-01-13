@@ -18,7 +18,10 @@ import {
     Register,
     AdminUsersPage,
     AdminDashboard,
-    RestPassword
+    RestPassword,
+    AboutPage,
+    ContactPage,
+    SupportPage
 } from "./index";
 import { ROLES } from "../utils/roles";
 
@@ -230,6 +233,9 @@ const AppRoutes = () => {
             {/* Common */}
             <Route path="/unauthorized" element={<Unauthorized />} />
             <Route path="*" element={<div>Not Found</div>} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/support" element={<SupportPage />} />
+            <Route path="/contact" element={<ContactPage />} />
         </Routes>
     );
 };

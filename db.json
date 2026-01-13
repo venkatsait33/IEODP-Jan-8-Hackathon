@@ -165,6 +165,17 @@
       "previousState": "ACTION_TAKEN",
       "newState": "CLOSED",
       "timestamp": "2026-01-12T05:59:56.734Z"
+    },
+    {
+      "id": "5a35",
+      "entity": "TICKET",
+      "entityId": "855b",
+      "userName": "Enterprise User",
+      "role": "AUDITORS",
+      "action": "AUDITOR_REJECTED",
+      "previousState": "ACTION_TAKEN",
+      "newState": "CLOSED",
+      "timestamp": "2026-01-12T06:25:17.428Z"
     }
   ],
   "tickets": [
@@ -245,11 +256,11 @@
       "title": "testing wiith getTicketById",
       "description": "Get Ticket Details by id and update the page when there is any update in the workFLow",
       "priority": "HIGH",
-      "status": "FORWARDED_TO_MANAGEMENT",
+      "status": "CLOSED",
       "raisedBy": 1,
       "leadershipComment": "added the comment from leadership form",
-      "managementAction": "",
-      "auditorDecision": "",
+      "managementAction": "added comment from management ",
+      "auditorDecision": "REJECTED",
       "createdAt": "2026-01-12T06:18:06.914Z"
     }
   ]

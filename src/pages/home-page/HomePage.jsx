@@ -3,6 +3,7 @@ import HeroSection from './components/HeroSection'
 import KeyCapabilities from './components/KeyCapabilities'
 import WorkFlow from './components/WorkFlow'
 import { Link } from 'react-router-dom'
+import Reviews from './components/Review'
 
 const HomePage = () => {
   return (
@@ -10,6 +11,7 @@ const HomePage = () => {
       <HeroSection />
       <KeyCapabilities />
       <WorkFlow />
+      <Reviews/>
       <section className="text-center py-16 bg-base-200">
         <h2 className="text-2xl font-bold mb-4">Ready to get started?</h2>
         <div className="flex justify-center gap-4">

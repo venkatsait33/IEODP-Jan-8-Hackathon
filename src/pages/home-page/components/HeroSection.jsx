@@ -26,10 +26,9 @@ const HeroSection = () => {
                     max-md:h-full transition-[width] backdrop-blur flex-col md:flex-row flex gap-8 
                     ${menuOpen ? "max-md:w-full" : "max-md:w-0"}`}
                 >
-                    <a className="hover:text-indigo-600" href="#">Products</a>
-                    <a className="hover:text-indigo-600" href="#">Customer Stories</a>
-                    <a className="hover:text-indigo-600" href="#">Pricing</a>
-                    <a className="hover:text-indigo-600" href="#">Docs</a>
+                    <Link to='/about' className="hover:text-primary">About</Link>
+                    <Link to='/support' className="hover:text-primary">Support</Link>
+                    <Link to='/contact' className="hover:text-primary">Contact</Link>
 
                     <button className="md:hidden" onClick={() => setMenuOpen(false)}>
                         ✕
@@ -39,7 +38,7 @@ const HeroSection = () => {
                 {/* DESKTOP BUTTON */}
                 <div className="hidden md:flex space-x-4">
                     <Link
-                        className="text-indigo-600 bg-indigo-100 px-5 py-2 rounded-full text-sm font-medium hover:bg-indigo-200 transition"
+                        className=" btn btn-primary px-5 py-2 rounded-full text-sm font-medium transition"
                         to="/login"
                     >
                         Login
@@ -62,10 +61,10 @@ const HeroSection = () => {
             >
                 <motion.button
                     variants={fadeUp}
-                    className="mt-10 mb-6 flex items-center space-x-2 border border-indigo-600 text-indigo-600 text-xs rounded-full px-4 pr-1.5 py-1.5 hover:bg-indigo-50 transition"
+                    className="mt-10 mb-6 flex items-center space-x-2 border border-primary-600 text-primary text-xs rounded-full px-4 pr-1.5 py-1.5 hover:bg-primary-50 transition"
                 >
                     <span>AI-assisted decision making</span>
-                    <span className="flex items-center justify-center p-1 rounded-full bg-indigo-600">
+                    <span className="flex items-center justify-center p-1 rounded-full bg-primary">
                         <ArrowRight className="text-white" />
                     </span>
                 </motion.button>
@@ -75,7 +74,7 @@ const HeroSection = () => {
                     className="text-center font-semibold text-2xl sm:text-4xl md:text-4xl max-w-3xl leading-tight"
                 >
                     Intelligent Enterprise Operations & Decision Platform{" "}
-                    <span className="text-indigo-600">AI-Insights</span>
+                    <span className="text-primary-600">AI-Insights</span>
                 </motion.h1>
 
                 <motion.p
@@ -88,7 +87,7 @@ const HeroSection = () => {
 
                     <motion.button
                         variants={fadeUp}
-                        className=" bg-indigo-600 text-white px-6 pr-2.5 py-2.5 rounded-full text-sm font-medium flex items-center space-x-2 hover:bg-indigo-700 transition"
+                        className=" btn btn-primary px-6 pr-2.5 py-2.5 rounded-full text-sm font-medium flex items-center space-x-2  transition"
                     >
                         <Link to='/login'>Get Started</Link>
                         <ArrowRight />

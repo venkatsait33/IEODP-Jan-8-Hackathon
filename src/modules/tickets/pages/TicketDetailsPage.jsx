@@ -2,14 +2,14 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useGetTicketByIdQuery } from "../ticketsApi";
 import TicketTimeline from "../components/TicketTimeline";
-import LeadershipCommentForm from "../forms/LeadershipCommentForm";
-import ManagementActionForm from "../forms/ManagementActionForm";
-import AuditorDecisionForm from "../forms/AuditorDecisionForm";
 import { ROLES } from "../../../utils/roles";
 import { TICKET_STATUS } from "../../../utils/ticketStatus";
 import AuditTimeline from "../../audits/components/AuditTimeline";
 import { fadeIn, fadeUp } from "../../../utils/motionUtils";
 import { motion } from "framer-motion";
+import LeadershipCommentForm from "../forms/LeadershipCommentForm";
+import ManagementActionForm from "../forms/ManagementActionForm";
+import AuditorDecisionForm from "../forms/AuditorDecisionForm";
 
 const TicketDetailsPage = () => {
     const { id } = useParams();

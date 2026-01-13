@@ -1,5 +1,6 @@
 import { AlignLeft, CircleCheckBig, Star, StarHalf } from "lucide-react"
-
+import { motion } from "framer-motion"
+import { fadeIn, fadeUp } from "../../../utils/motionUtils"
 
 const reviewsData = [
     {
@@ -37,8 +38,11 @@ const reviewsData = [
 
 const Reviews = () => {
     return (
-        <div className='md:h-[500px] max-sm:flex max-sm:flex-col md:flex'>
-            <div className='md:w-[20%] '>
+        <motion.section initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn} className='md:h-[500px] max-sm:flex max-sm:flex-col md:flex'>
+            <motion.div variants={fadeUp} className='md:w-[20%] '>
                 <div className='bg-[#1F8268] h-[500px] flex justify-center items-center flex-col'>
                     <div className='bg-[#62A795] btn btn-circle w-22 h-22'>
                         <AlignLeft className='w-12 h-12 ' />
@@ -54,14 +58,17 @@ const Reviews = () => {
                     </div>
 
                 </div>
-            </div>
+            </motion.div>
 
 
-            <div className='md:w-[80%] bg-[#EAF8F4] flex justify-center items-center '>
+            <motion.div initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn} className='md:w-[80%] bg-[#EAF8F4] flex justify-center items-center '>
                 <div className="carousel rounded-box ">
                     {
                         reviewsData.map((item) => (
-                            <div className="carousel-item " key={item.id}>
+                            <motion.div variants={fadeUp} className="carousel-item " key={item.id}>
                                 <div className='card w-[300px] ml-10 mt-10 mb-10'>
                                     <div className="flex items-center justify-center md:avatar ">
                                         <div className="rounded md:h-32 md:w-32 ">
@@ -80,11 +87,11 @@ const Reviews = () => {
                                         </div>
                                         <div className='flex items-center gap-2'> <span> 4.5</span>
                                             <div className='flex gap-1 '>
-                                                <Star  className='text-amber-400' />
-                                                <Star  className='text-amber-400' />
-                                                <Star  className='text-amber-400' />
-                                                <Star  className='text-amber-400' />
-                                                <StarHalf  className='text-amber-400' />
+                                                <Star className='text-amber-400' />
+                                                <Star className='text-amber-400' />
+                                                <Star className='text-amber-400' />
+                                                <Star className='text-amber-400' />
+                                                <StarHalf className='text-amber-400' />
                                             </div></div>
                                         <div className=''>
                                             <p className='text-md'>"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam excepturi nisi, perferendis veniam adipisci deserunt praesentium unde non est assumenda."</p>
@@ -92,13 +99,13 @@ const Reviews = () => {
                                     </div>
                                 </div>
 
-                            </div>
+                            </motion.div>
                         ))
                     }
                 </div>
 
-            </div>
-        </div>
+            </motion.div>
+        </motion.section>
     )
 }
 

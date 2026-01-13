@@ -34,13 +34,16 @@ const Navbar = () => {
                                     <NavLink to="/about" role='tab' className={linkClass}>
                                         About
                                     </NavLink>
-                                    
+
                                 </li>
                                 <li> <NavLink to="/support" role='tab' className={linkClass}>
                                     Support
                                 </NavLink></li>
                                 <li>   <NavLink to="/contact" role='tab' className={linkClass}>
                                     Contact
+                                </NavLink></li>
+                                <li>   <NavLink to="/faq" role='tab' className={linkClass}>
+                                    Faq
                                 </NavLink></li>
                             </ul>
                         </div>
@@ -66,6 +69,9 @@ const Navbar = () => {
 
                         <NavLink to="/contact" role='tab' className={linkClass}>
                             Contact
+                        </NavLink>
+                        <NavLink to="/faq" role='tab' className={linkClass}>
+                            Faq
                         </NavLink>
                     </div>
                     <div className=' md:navbar-end '>

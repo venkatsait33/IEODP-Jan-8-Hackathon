@@ -17,9 +17,10 @@ import Register from "../auth/register/Register";
 import AdminUsersPage from "../auth/admin/pages/AdminUsersPage";
 import AdminDashboard from "../auth/admin/pages/AdminDashboard";
 import RestPassword from "../auth/password-rest/RestPassword";
-import AboutPage from "../pages/home-page/About";
-import ContactPage from "../pages/home-page/ContactPage";
-import SupportPage from "../pages/home-page/SupportPage";
+import AboutPage from "../pages/About";
+import ContactPage from "../pages/ContactPage";
+import FaqPage from "../pages/FaqPage";
+import SupportPage from "../pages/SupportPage";
 
 export {
     Login,
@@ -43,7 +44,8 @@ export {
     WorkflowProcessPage,
     AboutPage,
     ContactPage,
-    SupportPage
+    SupportPage,
+    FaqPage
 };
 
 

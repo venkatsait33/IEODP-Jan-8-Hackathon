@@ -21,7 +21,8 @@ import {
     RestPassword,
     AboutPage,
     ContactPage,
-    SupportPage
+    SupportPage,
+    FaqPage
 } from "./index";
 import { ROLES } from "../utils/roles";
 
@@ -236,6 +237,7 @@ const AppRoutes = () => {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/support" element={<SupportPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/faq" element={<FaqPage />} />
         </Routes>
     );
 };

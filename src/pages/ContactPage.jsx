@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { fadeIn, fadeUp } from "../utils/motionUtils";
+import {motion} from "framer-motion"
 
 const ContactPage = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -11,16 +13,22 @@ const ContactPage = () => {
     };
 
     return (
-        <div className="max-w-5xl  mx-auto px-6 py-10 space-y-8">
-            <div>
+        <motion.div initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeIn}  className="max-w-5xl  mx-auto px-6 py-10 space-y-8">
+            <motion.div variants={fadeUp}>
                 <h1 className="text-3xl font-bold mb-2">Contact Us</h1>
                 <p className="text-base-content/70">
                     Have questions, partnership ideas, or feedback? We'd love to hear from you.
                 </p>
-            </div>
+            </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-                <div className="card bg-base-200 p-6 shadow space-y-3">
+            <motion.div initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn} className="grid md:grid-cols-2 gap-6">
+                <motion.div variants={fadeUp} className="card bg-base-200 p-6 shadow space-y-3">
                     <h2 className="text-xl font-semibold">Company Information</h2>
                     <p><strong>IEODP Headquarters</strong></p>
                     <p>Hyderabad, Telangana, India</p>
@@ -29,9 +37,9 @@ const ContactPage = () => {
                     <p className="text-base-content/70">
                         For business inquiries, partnerships, or demos, contact us using the form.
                     </p>
-                </div>
+                </motion.div>
 
-                <div className="card bg-base-200 p-6 shadow">
+                <motion.div variants={fadeUp} className="card bg-base-200 p-6 shadow">
                     <h2 className="text-xl font-semibold mb-3">Send Us a Message</h2>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
@@ -57,9 +65,9 @@ const ContactPage = () => {
 
                         <button className="btn btn-accent w-full">Send Message</button>
                     </form>
-                </div>
-            </div>
-        </div>
+                </motion.div>
+            </motion.div>
+        </motion.div>
     );
 };
 

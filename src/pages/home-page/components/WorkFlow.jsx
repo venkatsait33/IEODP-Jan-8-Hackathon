@@ -4,7 +4,7 @@ import { fadeUp, fadeIn } from '../../../utils/motionUtils'
 
 const WorkFlow = () => {
   return (
-      <div>
+      <div className='p-2'>
           <motion.section initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}

@@ -1,16 +1,22 @@
+import { fadeIn, fadeUp } from "../utils/motionUtils";
+import { motion } from "framer-motion";
+
 const AboutPage = () => {
     return (
-        <div className="max-w-6xl  mx-auto px-6 py-10 space-y-8">
-            <div>
+        <motion.div initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeIn}  className="max-w-6xl  mx-auto px-6 py-10 space-y-8">
+            <motion.div variants={fadeUp}>
                 <h1 className="text-3xl font-bold mb-2">About IEODP</h1>
                 <p className="text-base-content/70 leading-relaxed">
                     Intelligent Enterprise Operations & Decision Platform (IEODP) is a unified
                     enterprise-grade system designed to manage workflows, approvals, compliance,
                     and decision intelligence across organizations.
                 </p>
-            </div>
+            </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <motion.div variants={fadeUp} className="grid md:grid-cols-2 gap-6">
                 <div className="card bg-base-200 p-6 shadow">
                     <h2 className="text-xl font-semibold mb-2">Our Mission</h2>
                     <p className="text-base-content/70">
@@ -26,9 +32,9 @@ const AboutPage = () => {
                         people, processes, and data into one intelligent platform.
                     </p>
                 </div>
-            </div>
+            </motion.div>
 
-            <div className="card bg-base-200 p-6 shadow">
+            <motion.div variants={fadeUp} className="card bg-base-200 p-6 shadow">
                 <h2 className="text-xl font-semibold mb-2">Why IEODP?</h2>
                 <ul className="list-disc list-inside text-base-content/70 space-y-1">
                     <li>Role-driven workflows with full audit trail</li>
@@ -37,8 +43,8 @@ const AboutPage = () => {
                     <li>Secure, scalable, and modular architecture</li>
                     <li>AI-ready decision support foundation</li>
                 </ul>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 };
 

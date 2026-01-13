@@ -29,6 +29,8 @@ const HeroSection = () => {
                     <Link to='/about' className="hover:text-primary">About</Link>
                     <Link to='/support' className="hover:text-primary">Support</Link>
                     <Link to='/contact' className="hover:text-primary">Contact</Link>
+                    <Link to='/faq' className="hover:text-primary">Faq</Link>
+
 
                     <button className="md:hidden" onClick={() => setMenuOpen(false)}>
                         ✕

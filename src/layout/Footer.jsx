@@ -1,11 +1,9 @@
-import { FacebookIcon, Linkedin, TwitterIcon, Youtube } from 'lucide-react'
-import React from 'react'
 
 const Footer = () => {
     return (
 
-        <footer className="bg-base-200  border-t">
-            <div className="max-w-7xl mx-auto px-6 py-8 grid md:grid-cols-3 gap-6 text-sm">
+        <footer className="bg-base-200   border-t">
+            <div className="max-w-7xl mx-auto px-6 py-8 grid md:grid-cols-3 gap-6 text-sm ">
 
                 {/* Brand */}
                 <div>

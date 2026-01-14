@@ -8,7 +8,7 @@ const Login = () => {
     return (
         <MotionDiv delay={0.3}>
             <div className="min-h-screen flex items-center justify-center bg-base-200">
-                <div className="">
+                <div className="max-sm:mt-6">
                     <div className="hero card bg-gradient-to-br from-lime-500 to-lime-900">
                         <div className="hero-content card-body flex-col lg:flex-row-reverse font-bold">
                             <div>

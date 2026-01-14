@@ -7,7 +7,7 @@ const MainLayout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <div className="min-h-screen flex bg-base-100 scroll-smooth ">
+    <div className="min-h-screen w-full flex bg-base-100 scroll-smooth ">
       {/* Sidebar */}
       <div className="w-64 hidden md:block">
         <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />

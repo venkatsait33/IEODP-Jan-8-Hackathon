@@ -14,7 +14,7 @@ const App = () => {
   const shouldHideNavbar = hideNavbarRoutes.includes(location.pathname);
 
   return (
-    <div className=" h-screen">
+    <div className=" h-screen ">
       {!shouldHideNavbar && <Navbar />}
       <div className="mt-14">
         <OfflineDetector />

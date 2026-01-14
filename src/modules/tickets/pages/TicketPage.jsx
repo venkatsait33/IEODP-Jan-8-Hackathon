@@ -31,7 +31,7 @@ const TicketsPage = () => {
             initial="hidden"
             animate="visible"
             variants={fadeIn}
-            className="space-y-6"
+            className=""
         >
             {/* Title */}
             <motion.h2
@@ -58,7 +58,7 @@ const TicketsPage = () => {
                 variants={staggerContainer}
                 initial="hidden"
                 animate="visible"
-                className="space-y-4"
+                className=""
             >
                 {tickets.map((ticket) => (
                     <motion.div

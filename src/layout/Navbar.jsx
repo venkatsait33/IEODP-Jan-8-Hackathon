@@ -26,7 +26,7 @@ const Navbar = () => {
                             </div>
                             <ul
                                 tabIndex="-1"
-                                className="tabs tabs-border flex flex-col dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                className="tabs tabs-border   max-sm:flex-col dropdown-content bg-base-100 rounded-box z-1 w-52 max-sm:mt-12 p-2 shadow">
                                 <li> <NavLink to="/" role='tab' className={linkClass}>
                                     Home
                                 </NavLink></li>

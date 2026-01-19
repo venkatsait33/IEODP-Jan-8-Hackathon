@@ -11,7 +11,9 @@ const roleBadgeMap = {
 const AuditTimeline = ({ ticketId }) => {
     const { data: logs = [], isLoading } = useGetAuditLogsByTicketQuery(ticketId);
 
-    if (isLoading) return <div className="loading loading-spinner" />;
+    if (isLoading) return (
+      <div className="loading loading-spinner mx-auto flex justify-center" />
+    );
 
     if (!logs.length) {
         return (
